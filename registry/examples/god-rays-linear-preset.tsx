@@ -1,0 +1,35 @@
+// Generated from Paper Shaders 0.0.77 presets (@paper-design/shaders-react@0.0.77; Apache-2.0).
+// vivid-layer Example wrapper. Preset data is licensed under Apache-2.0. Do not edit manually.
+
+import { GodRays } from "@/components/effects/god-rays"
+
+export default function GodRaysLinearPreset() {
+  return (
+    <GodRays
+      fit="contain"
+      scale={1}
+      rotation={0}
+      offsetX={0.2}
+      offsetY={-0.8}
+      originX={0.5}
+      originY={0.5}
+      worldWidth={0}
+      worldHeight={0}
+      colorBack="#000000"
+      colorBloom="#eeeeee"
+      colors={[
+        "#ffffff1f",
+        "#ffffff3d",
+        "#ffffff29",
+      ]}
+      density={0.41}
+      spotty={0.25}
+      midSize={0.1}
+      midIntensity={0.75}
+      intensity={0.79}
+      bloom={1}
+      speed={0.5}
+      frame={0}
+    />
+  )
+}

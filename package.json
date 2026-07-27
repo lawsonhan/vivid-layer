@@ -1,0 +1,23 @@
+{
+  "name": "vivid-layer",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Expressive React components distributed through the shadcn Registry.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lawsonhan/vivid-layer.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "scripts": {
+    "check": "pnpm registry:check",
+    "registry:check": "shadcn registry validate registry.json && node scripts/check-boundary.mjs",
+    "registry:build": "shadcn build registry.json -o public/r"
+  },
+  "devDependencies": {
+    "shadcn": "4.13.0"
+  }
+}
