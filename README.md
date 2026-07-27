@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="./public/brand/vivid-layer-lockup.svg" alt="Vivid Layer" width="260" />
-</p>
+<h1 align="center">Vivid Layer</h1>
 
 <p align="center">
   Expressive React components and shader effects distributed through the shadcn Registry.

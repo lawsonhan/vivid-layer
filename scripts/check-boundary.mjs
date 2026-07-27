@@ -75,6 +75,30 @@ for (const item of registry.items) {
   }
 }
 
+const exportedRegistrySourceFiles = new Set()
+for (const sourceRoot of allowedRegistrySourceRoots) {
+  const sourceFiles = await collectFiles(
+    path.join(repositoryRoot, sourceRoot)
+  )
+  for (const absolutePath of sourceFiles) {
+    const sourcePath = normalizeRepositoryPath(
+      path
+        .relative(repositoryRoot, absolutePath)
+        .split(path.sep)
+        .join(path.posix.sep)
+    )
+    exportedRegistrySourceFiles.add(sourcePath)
+  }
+}
+
+for (const sourcePath of exportedRegistrySourceFiles) {
+  if (!registrySourceFiles.has(sourcePath)) {
+    throw new Error(
+      `Unreferenced source file leaked into public source: ${sourcePath}`
+    )
+  }
+}
+
 for (const sourcePath of registrySourceFiles) {
   const absolutePath = path.join(repositoryRoot, sourcePath)
   const sourceStat = await lstat(absolutePath)
@@ -132,4 +156,23 @@ function normalizeRepositoryPath(filePath) {
   }
 
   return normalized
+}
+
+async function collectFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true })
+  const files = []
+
+  for (const entry of entries) {
+    const entryPath = path.join(directory, entry.name)
+    if (entry.isSymbolicLink()) {
+      throw new Error(`Public source does not accept symlinks: ${entryPath}`)
+    }
+    if (entry.isDirectory()) {
+      files.push(...(await collectFiles(entryPath)))
+      continue
+    }
+    if (entry.isFile()) files.push(entryPath)
+  }
+
+  return files
 }
