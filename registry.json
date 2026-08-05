@@ -79,6 +79,45 @@
       ]
     },
     {
+      "name": "plan-composer",
+      "type": "registry:ui",
+      "title": "Plan Composer",
+      "description": "An AI message input that expands into an agent's clarifying questions and returns the answers.",
+      "dependencies": [
+        "lucide-react@^1.23.0",
+        "motion@^12.42.2"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/input-group"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/plan-composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "plan-composer-demo",
+      "type": "registry:component",
+      "title": "Plan Composer Demo",
+      "description": "Simulates an agent asking clarifying questions, then reports the message and plan it returns.",
+      "registryDependencies": [
+        "plan-composer"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/plan-composer-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/plan-composer-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "chat-minimap",
       "type": "registry:ui",
       "title": "Chat Minimap",
@@ -184,6 +223,83 @@
           "path": "registry/examples/grid-loader-demo.tsx",
           "type": "registry:component",
           "target": "@components/examples/grid-loader-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stay-card",
+      "type": "registry:ui",
+      "title": "Stay Card",
+      "description": "Displays a borderless gallery-based hotel result with pricing and rating.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@shadcn/carousel",
+        "@shadcn/separator"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/stay-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stay-card-demo",
+      "type": "registry:component",
+      "title": "Stay Card Demo",
+      "description": "Shows a gallery-based hotel result with fixed, licensed travel photography.",
+      "registryDependencies": [
+        "stay-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/stay-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/stay-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mosaic-stay-card",
+      "type": "registry:ui",
+      "title": "Mosaic Stay Card",
+      "description": "Displays a compact hotel result with a three-image mosaic, address, rating, and description.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0"
+      ],
+      "registryDependencies": [
+        "@shadcn/card",
+        "@shadcn/separator"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mosaic-stay-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mosaic-stay-card-demo",
+      "type": "registry:component",
+      "title": "Mosaic Stay Card Demo",
+      "description": "Shows a compact three-image hotel card with a rating, address, and short description.",
+      "registryDependencies": [
+        "mosaic-stay-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mosaic-stay-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mosaic-stay-card-demo.tsx"
         }
       ]
     },

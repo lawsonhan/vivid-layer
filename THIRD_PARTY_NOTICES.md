@@ -129,3 +129,18 @@ source file is dedicated to the public domain under
 | `grassland.e1827c55a038.webp` | DimiTalen | [Grassland near Botrange](https://commons.wikimedia.org/wiki/File:Grassland_near_Botrange,_Waimes,_2023.jpg) |
 | `desert-dunes.5f98c7cb1db6.webp` | pxhere | [Desert dunes in Africa](https://commons.wikimedia.org/wiki/File:Landscape,_sand,_desert,_dune,_adventure,_africa,.jpg) |
 | `waterfall.101a0ea725a7.webp` | Clemens Teichmann | [Waterfall](https://commons.wikimedia.org/wiki/File:Waterfall_(179372089).jpeg) |
+
+## Pexels Stay Card demo photography
+
+The Stay Card documentation and Registry examples reference the following
+remote photographs. No Pexels image files are downloaded, bundled, or
+redistributed by this repository.
+
+| Photo | Creator | Source |
+| --- | --- | --- |
+| Modern hotel room with a city view | Pexels User | [Photo 37433411](https://www.pexels.com/photo/modern-hotel-room-with-cozy-design-and-city-view-37433411/) |
+| Luxury resort pool | Margo Evardson | [Photo 35681350](https://www.pexels.com/photo/luxury-resort-pool-in-cancun-mexico-35681350/) |
+| Boutique hotel exterior | celal keser | [Photo 33966955](https://www.pexels.com/photo/charming-boutique-hotel-exterior-with-flowers-33966955/) |
+
+The photographs are used under the
+[Pexels License](https://www.pexels.com/license/).

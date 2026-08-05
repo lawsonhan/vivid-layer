@@ -2,7 +2,7 @@
   "name": "vivid-layer",
   "private": true,
   "version": "0.0.0",
-  "description": "Expressive React components distributed through the shadcn Registry.",
+  "description": "Expressive React components and shaders distributed through the shadcn Registry.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

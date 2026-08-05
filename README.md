@@ -7,6 +7,10 @@
 <p align="center">
   <a href="https://www.vivid-layer.com/docs">Documentation</a>
   ·
+  <a href="https://www.vivid-layer.com/components">Components</a>
+  ·
+  <a href="https://www.vivid-layer.com/shaders">Shaders</a>
+  ·
   <a href="https://www.vivid-layer.com">Website</a>
   ·
   <a href="https://github.com/lawsonhan/vivid-layer/issues">Issues</a>
@@ -24,27 +28,34 @@ Add the Vivid Layer Registry to `components.json`:
 }
 ```
 
-Install a component with the shadcn CLI:
+Install a Component or Shader with the shadcn CLI:
 
 ```bash
 pnpm dlx shadcn@latest add @vivid-layer/grain-gradient
 pnpm dlx shadcn@latest add @vivid-layer/chat-minimap
+pnpm dlx shadcn@latest add @vivid-layer/stay-card
 pnpm dlx shadcn@latest add @vivid-layer/single-day-weather-card
 ```
 
 ## Components
 
-The public Registry currently includes:
+The public Component catalog currently includes:
 
 - Install Command and Install Command Toolbar
 - Chat Minimap
 - Line Waveform
 - Grid Loader
+- Stay Card
 - Single-day and multi-day Weather Cards
-- 26 Paper Shaders adapters with curated presets
 
-Browse the complete catalog and interactive previews in the
-[documentation](https://www.vivid-layer.com/docs).
+Browse the complete Component catalog and interactive previews at
+[vivid-layer.com/components](https://www.vivid-layer.com/components).
+
+## Shaders
+
+The public Shader catalog includes 26 Paper Shaders adapters with curated
+presets. Browse the complete catalog, configurators, and interactive previews
+at [vivid-layer.com/shaders](https://www.vivid-layer.com/shaders).
 
 ## Repository structure
 
