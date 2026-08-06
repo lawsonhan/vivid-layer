@@ -23,6 +23,8 @@ OpenAI does not sponsor, endorse, or maintain these assets. “OpenAI” and
 “ChatKit” remain trademarks of their respective owner.
 
 Recorded July 27, 2026.
+The stars in the two night-condition assets were refined on August 5, 2026,
+using the same AI-assisted visual direction.
 
 | Stored asset | SHA-256 |
 | --- | --- |
@@ -34,5 +36,5 @@ Recorded July 27, 2026.
 | `thunderstorm.webp` | `bedbbc00192cfd1d26b3664ffee34c13f39a0e12dbe77b4db804a0caad7c51d1` |
 | `snow.webp` | `1242b2a9f3e3486a0d8d205016a1fe3c9a8c0ade3b3c927ae217b997fe0db357` |
 | `wind.webp` | `109cb1a8eb793119cec4b695f931c26f1ca89545a440b6b68080bbeb4d4d586c` |
-| `clear-night.webp` | `0b2550c51230ccd97ed1c52b8b329a1694c050803183a3bebcee98f44cfe9ff8` |
-| `partly-cloudy-night.webp` | `98b72e84a27b96eb72e359b121f63f195674fced25cfc24e70db50027a2fd804` |
+| `clear-night.webp` | `9ea69d3ba2800acdfa9370e4c5ce6b40dce78ca4f9b08c8140b533c492e65ae8` |
+| `partly-cloudy-night.webp` | `84034a72b00ac282f82bcc65bc494996f1447753877c28223f085d8b23a87391` |
