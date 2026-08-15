@@ -84,6 +84,8 @@
       "title": "Plan Composer",
       "description": "An AI message input that expands into an agent's clarifying questions and returns the answers.",
       "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
         "lucide-react@^1.23.0",
         "motion@^12.42.2"
       ],
@@ -114,6 +116,89 @@
           "path": "registry/examples/plan-composer-demo.tsx",
           "type": "registry:component",
           "target": "@components/examples/plan-composer-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voice-composer",
+      "type": "registry:ui",
+      "title": "Voice Composer",
+      "description": "Switches between a controlled text composer and browser-backed voice capture with a real-time waveform.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0",
+        "motion@^12.42.2"
+      ],
+      "registryDependencies": [
+        "line-waveform",
+        "@shadcn/button",
+        "@shadcn/input-group"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/voice-composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "voice-composer-demo",
+      "type": "registry:component",
+      "title": "Voice Composer Demo",
+      "description": "Shows a controlled Voice Composer with an external static or scrolling waveform switch.",
+      "registryDependencies": [
+        "voice-composer",
+        "@shadcn/toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voice-composer-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voice-composer-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "draft-email-card",
+      "type": "registry:ui",
+      "title": "Draft Email Card",
+      "description": "A controlled email drafting card with an editable recipient, subject, body, and action callbacks.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/separator",
+        "@shadcn/textarea"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/draft-email-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "draft-email-card-demo",
+      "type": "registry:component",
+      "title": "Draft Email Card Demo",
+      "description": "Shows a controlled draft email with editable fields and callback wiring.",
+      "registryDependencies": [
+        "draft-email-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/draft-email-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/draft-email-card-demo.tsx"
         }
       ]
     },
@@ -225,6 +310,358 @@
           "target": "@components/examples/grid-loader-demo.tsx"
         }
       ]
+    },
+    {
+      "name": "streaming",
+      "type": "registry:ui",
+      "title": "Streaming",
+      "description": "Renders cumulative agent Markdown at a smooth, evenly paced reveal with a subtle animation for new content.",
+      "dependencies": [
+        "@streamdown/cjk@^1.0.3",
+        "streamdown@^2.5.0"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/streaming.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@keyframes sd-fadeIn": {
+          "from": {
+            "opacity": "0"
+          },
+          "to": {
+            "opacity": "1"
+          }
+        },
+        "@keyframes sd-blurIn": {
+          "from": {
+            "opacity": "0",
+            "filter": "blur(4px)"
+          },
+          "to": {
+            "opacity": "1",
+            "filter": "blur(0)"
+          }
+        },
+        "@keyframes sd-slideUp": {
+          "from": {
+            "opacity": "0",
+            "top": "4px"
+          },
+          "to": {
+            "opacity": "1",
+            "top": "0"
+          }
+        },
+        "@keyframes sd-slideLeft": {
+          "from": {
+            "opacity": "0",
+            "left": "20px"
+          },
+          "to": {
+            "opacity": "1",
+            "left": "0"
+          }
+        },
+        "[data-sd-animate]": {
+          "animation": "var(--sd-animation, sd-fadeIn) 400ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"fadeIn\"] [data-sd-animate]": {
+          "animation-name": "sd-fadeIn"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"blurIn\"] [data-sd-animate]": {
+          "animation-name": "sd-blurIn"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"slideUp\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation-name": "sd-slideUp"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"slideLeft\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation-name": "sd-slideLeft"
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          "[data-sd-animate]": {
+            "animation": "none"
+          }
+        }
+      },
+      "docs": "Add @source \"../node_modules/streamdown/dist/*.js\" and @source \"../node_modules/@streamdown/cjk/dist/*.js\" to your Tailwind CSS entry file. Adjust the relative paths when that file is nested differently."
+    },
+    {
+      "name": "playful-streaming",
+      "type": "registry:ui",
+      "title": "Playful Streaming",
+      "description": "Adds wave, spectrum trail, magnetize, spin-in, and scale-slam effects to the smooth Markdown reveal.",
+      "registryDependencies": [
+        "streaming"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/playful-streaming.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@keyframes sd-wave": {
+          "0%, 100%": {
+            "top": "0"
+          },
+          "50%": {
+            "top": "-0.12em"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"wave\"] [data-sd-animate]": {
+          "position": "relative"
+        },
+        "@keyframes sd-spectrumTrail": {
+          "0%": {
+            "color": "var(--sd-spectrum-core)",
+            "opacity": "0.85",
+            "text-shadow": "0 0 0.09em color-mix(in oklch, var(--sd-spectrum-core) 42%, transparent), calc(0.16em * var(--sd-spectrum-trail-direction)) 0 0.01em color-mix(in oklch, var(--sd-spectrum-near) 72%, transparent), calc(0.36em * var(--sd-spectrum-trail-direction)) 0 0.045em color-mix(in oklch, var(--sd-spectrum-far) 34%, transparent)"
+          },
+          "24%": {
+            "color": "var(--sd-spectrum-core)",
+            "opacity": "1",
+            "text-shadow": "0 0 0.06em color-mix(in oklch, var(--sd-spectrum-core) 28%, transparent), calc(0.1em * var(--sd-spectrum-trail-direction)) 0 0.008em color-mix(in oklch, var(--sd-spectrum-near) 50%, transparent), calc(0.24em * var(--sd-spectrum-trail-direction)) 0 0.035em color-mix(in oklch, var(--sd-spectrum-far) 24%, transparent)"
+          },
+          "56%": {
+            "color": "var(--sd-spectrum-near)",
+            "opacity": "1",
+            "text-shadow": "0 0 0.035em color-mix(in oklch, var(--sd-spectrum-near) 14%, transparent), calc(0.04em * var(--sd-spectrum-trail-direction)) 0 0.006em color-mix(in oklch, var(--sd-spectrum-near) 26%, transparent), calc(0.12em * var(--sd-spectrum-trail-direction)) 0 0.025em color-mix(in oklch, var(--sd-spectrum-far) 14%, transparent)"
+          },
+          "80%": {
+            "color": "inherit",
+            "opacity": "1",
+            "text-shadow": "0 0 0.015em color-mix(in oklch, var(--sd-spectrum-near) 6%, transparent), 0 0 0 transparent, 0 0 0 transparent"
+          },
+          "100%": {
+            "color": "inherit",
+            "opacity": "1",
+            "text-shadow": "0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]": {
+          "--sd-spectrum-core": "oklch(0.56 0.25 350)",
+          "--sd-spectrum-near": "oklch(0.5 0.24 305)",
+          "--sd-spectrum-far": "oklch(0.47 0.2 285)",
+          "--sd-spectrum-trail-direction": "-1"
+        },
+        ".dark [data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]": {
+          "--sd-spectrum-core": "oklch(0.78 0.2 350)",
+          "--sd-spectrum-near": "oklch(0.74 0.21 305)",
+          "--sd-spectrum-far": "oklch(0.7 0.19 285)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"] [data-sd-animate]": {
+          "animation-name": "sd-spectrumTrail",
+          "animation-timing-function": "cubic-bezier(0.22, 1, 0.36, 1)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]:dir(rtl)": {
+          "--sd-spectrum-trail-direction": "1"
+        },
+        "@keyframes sd-magnetize": {
+          "0%": {
+            "opacity": "0",
+            "transform": "var(--sd-magnetize-origin, translate(60px, 30px) rotate(30deg))"
+          },
+          "60%": {
+            "opacity": "1",
+            "transform": "translate(0, 0) rotate(0)"
+          },
+          "80%": {
+            "transform": "translate(0, 0) rotate(0) scale(1.05)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "translate(0, 0) rotate(0) scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 1)": {
+          "--sd-magnetize-origin": "translate(-27px, 23px) rotate(-47deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 2)": {
+          "--sd-magnetize-origin": "translate(-52px, 42px) rotate(-74deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 3)": {
+          "--sd-magnetize-origin": "translate(15px, -3px) rotate(93deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 4)": {
+          "--sd-magnetize-origin": "translate(66px, 48px) rotate(80deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 5)": {
+          "--sd-magnetize-origin": "translate(51px, 5px) rotate(83deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 6)": {
+          "--sd-magnetize-origin": "translate(-56px, 14px) rotate(-54deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 7)": {
+          "--sd-magnetize-origin": "translate(-79px, 1px) rotate(-7deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 8)": {
+          "--sd-magnetize-origin": "translate(-50px, 8px) rotate(-52deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 9)": {
+          "--sd-magnetize-origin": "translate(37px, 9px) rotate(45deg)"
+        },
+        "@keyframes sd-spinIn": {
+          "0%": {
+            "opacity": "0",
+            "transform": "rotate(-720deg) scale(0)"
+          },
+          "65%": {
+            "opacity": "1",
+            "transform": "rotate(20deg) scale(1.12)"
+          },
+          "80%": {
+            "transform": "rotate(-8deg) scale(1.02)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "rotate(0) scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "@keyframes sd-scaleSlam": {
+          "0%": {
+            "opacity": "0",
+            "transform": "scale(2.5)"
+          },
+          "60%": {
+            "opacity": "1",
+            "transform": "scale(0.95)"
+          },
+          "80%": {
+            "transform": "scale(1.02)"
+          },
+          "100%": {
+            "transform": "scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "@media (prefers-reduced-motion: no-preference)": {
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-magnetize 900ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-spinIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-scaleSlam 700ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          }
+        },
+        "@media (forced-colors: active)": {
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"] [data-sd-animate]": {
+            "color": "inherit",
+            "text-shadow": "none",
+            "animation-name": "sd-fadeIn"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 900ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          }
+        }
+      }
     },
     {
       "name": "stay-card",

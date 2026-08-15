@@ -33,6 +33,8 @@ Install a Component or Shader with the shadcn CLI:
 ```bash
 pnpm dlx shadcn@latest add @vivid-layer/grain-gradient
 pnpm dlx shadcn@latest add @vivid-layer/chat-minimap
+pnpm dlx shadcn@latest add @vivid-layer/draft-email-card
+pnpm dlx shadcn@latest add @vivid-layer/streaming
 pnpm dlx shadcn@latest add @vivid-layer/stay-card
 pnpm dlx shadcn@latest add @vivid-layer/single-day-weather-card
 ```
@@ -43,8 +45,10 @@ The public Component catalog currently includes:
 
 - Install Command and Install Command Toolbar
 - Chat Minimap
+- Draft Email Card
 - Line Waveform
 - Grid Loader
+- Streaming
 - Stay Card
 - Single-day and multi-day Weather Cards
 

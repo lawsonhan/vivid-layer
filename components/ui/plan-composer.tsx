@@ -458,7 +458,7 @@ function PlanQuestionPage({
 
         <div
           aria-label={question.title}
-          className="mt-3 flex min-w-0 flex-col gap-1 overflow-hidden"
+          className="mt-3 flex min-w-0 flex-col gap-1"
           role="group"
         >
           {question.options.map((option, optionIndex) => (
