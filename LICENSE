@@ -1,0 +1,119 @@
+Vivid Layer Community License, Version 1.0
+
+Copyright (c) 2026 Lawson Han. All rights reserved in the Vivid Layer
+Material defined below.
+
+This is a source-available license. It is not an open-source license.
+
+1. Definitions
+
+"Vivid Layer Material" means the original source code, documentation, examples,
+and assets authored by the Licensor and distributed with this license. It also
+includes, to the extent copyrightable, original additions and modifications
+authored by the Licensor to Third-Party Material. It does not include the
+underlying Third-Party Material itself.
+
+"Third-Party Material" means code, assets, or other material identified in
+THIRD_PARTY_NOTICES.md or accompanied by a separate copyright or license
+notice.
+
+"End Product" means a website, application, service, or other product that
+uses Vivid Layer Material as part of a larger work and whose primary purpose
+is not to provide reusable source code, components, templates, or design
+resources to others.
+
+2. Permission
+
+Subject to this license, you may:
+
+a. use, copy, and modify Vivid Layer Material to create any number of personal
+   or commercial End Products, including client work and production services;
+
+b. operate, publish, and sell access to those End Products; and
+
+c. share Vivid Layer Material privately with your employees and contractors
+   only as needed to build or maintain your End Products, provided they follow
+   this license and do not retain or use it for another purpose.
+
+You may deliver an End Product to a client in source or compiled form. Vivid
+Layer Material must remain integrated into that End Product and may not be
+offered to the client as a reusable library, component collection, template,
+starter, or other development resource.
+
+3. Restrictions
+
+Except with prior written permission from the Licensor, you may not:
+
+a. publish, sublicense, sell, resell, redistribute, or otherwise make Vivid
+   Layer Material or a modified version available as standalone source code;
+
+b. use Vivid Layer Material to create or distribute a UI library, component
+   collection, template, starter, theme, design system, page builder, code
+   generator, or similar reusable product, whether free or paid;
+
+c. upload Vivid Layer Material or a modified version to a public source-code
+   repository, package registry, marketplace, download service, or other
+   platform intended for redistribution;
+
+d. provide Vivid Layer Material through a hosted service whose primary purpose
+   is to let others browse, copy, download, generate, or reuse it;
+
+e. remove or obscure copyright, license, attribution, or third-party notices;
+   or
+
+f. claim Vivid Layer Material as your own work.
+
+Distribution of ordinary compiled client-side code as an inseparable part of
+an End Product is allowed. This does not permit publishing the corresponding
+source files or marketing the End Product as a source-code, component, or
+template product.
+
+4. Third-Party Material
+
+Third-Party Material is excluded from this license and remains subject to its
+own license terms. You may exercise any rights granted by those licenses,
+including redistribution rights where applicable. Nothing in this license
+reduces or expands those third-party rights.
+
+When a file contains both Third-Party Material and Vivid Layer Material, the
+third-party license governs the underlying Third-Party Material and this
+license governs the Licensor's original additions and modifications. Rights
+to the Third-Party Material do not grant rights to redistribute the Vivid Layer
+Material added to it.
+
+See THIRD_PARTY_NOTICES.md and notices included with the relevant files.
+
+5. Ownership and trademarks
+
+The Licensor retains ownership of Vivid Layer Material. This license grants
+limited permission to use it and does not transfer copyright or other
+intellectual-property rights. It does not grant permission to use Vivid Layer
+names, logos, or trademarks except to truthfully identify origin or provide
+required attribution.
+
+6. Termination
+
+Your rights under this license terminate automatically if you breach its
+terms. Upon termination, you must stop using and distributing Vivid Layer
+Material and remove copies within your control, except where retention is
+required by law. Sections 4, 5, 7, and 8 survive termination.
+
+7. Disclaimer
+
+VIVID LAYER MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF TITLE, NON-INFRINGEMENT,
+MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. YOU ARE RESPONSIBLE FOR
+DETERMINING WHETHER YOUR USE COMPLIES WITH THIS LICENSE AND APPLICABLE LAW.
+
+8. Limitation of liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR WILL NOT BE LIABLE FOR ANY
+CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM VIVID LAYER MATERIAL OR ITS USE,
+WHETHER IN CONTRACT, TORT, OR OTHERWISE.
+
+9. Separate licenses
+
+Additional permissions and redistribution rights may be granted only through a
+separate written agreement. Separately offered Vivid Layer Pro blocks,
+templates, or other products may use different license terms and are not
+licensed by this document unless expressly stated.

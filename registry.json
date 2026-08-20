@@ -1,0 +1,4474 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vivid-layer",
+  "homepage": "https://github.com/lawsonhan/vivid-layer",
+  "items": [
+    {
+      "name": "install-command",
+      "type": "registry:ui",
+      "title": "Install Command",
+      "description": "Displays a compact install command with package manager switching and copy feedback.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/select"
+      ],
+      "categories": [
+        "foundations"
+      ],
+      "files": [
+        {
+          "path": "components/ui/install-command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "install-command-demo",
+      "type": "registry:component",
+      "title": "Install Command Demo",
+      "description": "Shows a compact shadcn Registry install command for npm, pnpm, yarn, and bun.",
+      "registryDependencies": [
+        "install-command"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/install-command-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/install-command-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "install-command-toolbar",
+      "type": "registry:ui",
+      "title": "Install Command Toolbar",
+      "description": "Combines an install command with provider-specific prompt copying and an optional preview link.",
+      "dependencies": [
+        "lucide-react@^1.23.0"
+      ],
+      "registryDependencies": [
+        "install-command",
+        "@shadcn/button",
+        "@shadcn/dropdown-menu"
+      ],
+      "categories": [
+        "foundations"
+      ],
+      "files": [
+        {
+          "path": "components/ui/install-command-toolbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "install-command-toolbar-demo",
+      "type": "registry:component",
+      "title": "Install Command Toolbar Demo",
+      "description": "Shows the install command toolbar with custom prompt providers and a preview link.",
+      "registryDependencies": [
+        "install-command-toolbar"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/install-command-toolbar-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/install-command-toolbar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "plan-composer",
+      "type": "registry:ui",
+      "title": "Plan Composer",
+      "description": "An AI message input that expands into an agent's clarifying questions and returns the answers.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0",
+        "motion@^12.42.2"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/input-group"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/plan-composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "plan-composer-demo",
+      "type": "registry:component",
+      "title": "Plan Composer Demo",
+      "description": "Simulates an agent asking clarifying questions, then reports the message and plan it returns.",
+      "registryDependencies": [
+        "plan-composer"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/plan-composer-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/plan-composer-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voice-composer",
+      "type": "registry:ui",
+      "title": "Voice Composer",
+      "description": "Switches between a controlled text composer and browser-backed voice capture with a real-time waveform.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0",
+        "motion@^12.42.2"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/input-group"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/voice-composer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/line-waveform.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "voice-composer-demo",
+      "type": "registry:component",
+      "title": "Voice Composer Demo",
+      "description": "Shows a controlled Voice Composer with an external static or scrolling waveform switch.",
+      "registryDependencies": [
+        "voice-composer",
+        "@shadcn/toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voice-composer-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voice-composer-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "draft-email-card",
+      "type": "registry:ui",
+      "title": "Draft Email Card",
+      "description": "A controlled email drafting card with an editable recipient, subject, body, and action callbacks.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@shadcn/button",
+        "@shadcn/separator",
+        "@shadcn/textarea"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/draft-email-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "draft-email-card-demo",
+      "type": "registry:component",
+      "title": "Draft Email Card Demo",
+      "description": "Shows a controlled draft email with editable fields and callback wiring.",
+      "registryDependencies": [
+        "draft-email-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/draft-email-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/draft-email-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-minimap",
+      "type": "registry:ui",
+      "title": "Chat Minimap",
+      "description": "A compact conversation navigator that previews turns, tracks reading position, and jumps between message anchors.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "@shadcn/hover-card",
+        "@shadcn/message-scroller"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chat-minimap.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat-minimap-demo",
+      "type": "registry:component",
+      "title": "Chat Minimap Demo",
+      "description": "Adds a chat minimap to a complete shadcn Message Scroller transcript.",
+      "registryDependencies": [
+        "chat-minimap",
+        "@shadcn/bubble",
+        "@shadcn/message",
+        "@shadcn/message-scroller"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/chat-minimap-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/chat-minimap-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-loader",
+      "type": "registry:ui",
+      "title": "Grid Loader",
+      "description": "A compact 5×5 status loader driven by six original compiled trajectories.",
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/grid-loader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grid-loader-demo",
+      "type": "registry:component",
+      "title": "Grid Loader Demo",
+      "description": "Shows all six Grid Loader trajectories in one enlarged comparison grid.",
+      "registryDependencies": [
+        "grid-loader"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grid-loader-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grid-loader-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "streaming",
+      "type": "registry:ui",
+      "title": "Streaming",
+      "description": "Renders cumulative agent Markdown at a smooth, evenly paced reveal with a subtle animation for new content.",
+      "dependencies": [
+        "@streamdown/cjk@^1.0.3",
+        "streamdown@^2.5.0"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/streaming.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@keyframes sd-fadeIn": {
+          "from": {
+            "opacity": "0"
+          },
+          "to": {
+            "opacity": "1"
+          }
+        },
+        "@keyframes sd-blurIn": {
+          "from": {
+            "opacity": "0",
+            "filter": "blur(4px)"
+          },
+          "to": {
+            "opacity": "1",
+            "filter": "blur(0)"
+          }
+        },
+        "@keyframes sd-slideUp": {
+          "from": {
+            "opacity": "0",
+            "top": "4px"
+          },
+          "to": {
+            "opacity": "1",
+            "top": "0"
+          }
+        },
+        "@keyframes sd-slideLeft": {
+          "from": {
+            "opacity": "0",
+            "left": "20px"
+          },
+          "to": {
+            "opacity": "1",
+            "left": "0"
+          }
+        },
+        "@keyframes sd-foldIn": {
+          "0%": {
+            "opacity": "0",
+            "filter": "brightness(0.55)",
+            "transform": "perspective(700px) rotateX(-92deg)"
+          },
+          "55%": {
+            "opacity": "1",
+            "filter": "brightness(0.85)",
+            "transform": "perspective(700px) rotateX(8deg)"
+          },
+          "78%": {
+            "filter": "brightness(0.97)",
+            "transform": "perspective(700px) rotateX(-3deg)"
+          },
+          "100%": {
+            "opacity": "1",
+            "filter": "none",
+            "transform": "perspective(700px) rotateX(0)"
+          }
+        },
+        "[data-sd-animate]": {
+          "animation": "var(--sd-animation, sd-fadeIn) 400ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"fadeIn\"] [data-sd-animate]": {
+          "animation-name": "sd-fadeIn"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"blurIn\"] [data-sd-animate]": {
+          "animation-name": "sd-blurIn"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"slideUp\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation-name": "sd-slideUp"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"slideLeft\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation-name": "sd-slideLeft"
+        },
+        "[data-slot=\"streaming\"][data-sd-animation=\"foldIn\"] [data-sd-animate]": {
+          "display": "inline-block",
+          "backface-visibility": "hidden",
+          "transform-origin": "50% 0%",
+          "animation-name": "sd-foldIn"
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          "[data-sd-animate]": {
+            "animation": "none"
+          }
+        }
+      },
+      "docs": "Add @source \"../node_modules/streamdown/dist/*.js\" and @source \"../node_modules/@streamdown/cjk/dist/*.js\" to your Tailwind CSS entry file. Adjust the relative paths when that file is nested differently."
+    },
+    {
+      "name": "playful-streaming",
+      "type": "registry:ui",
+      "title": "Playful Streaming",
+      "description": "Adds wave, spectrum trail, magnetize, spin-in, and scale-slam effects to the smooth Markdown reveal.",
+      "registryDependencies": [
+        "streaming"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/playful-streaming.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@keyframes sd-wave": {
+          "0%, 100%": {
+            "top": "0"
+          },
+          "50%": {
+            "top": "-0.12em"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"wave\"] [data-sd-animate]": {
+          "position": "relative"
+        },
+        "@keyframes sd-spectrumTrail": {
+          "0%": {
+            "color": "var(--sd-spectrum-core)",
+            "opacity": "0.85",
+            "text-shadow": "0 0 0.09em color-mix(in oklch, var(--sd-spectrum-core) 42%, transparent), calc(0.16em * var(--sd-spectrum-trail-direction)) 0 0.01em color-mix(in oklch, var(--sd-spectrum-near) 72%, transparent), calc(0.36em * var(--sd-spectrum-trail-direction)) 0 0.045em color-mix(in oklch, var(--sd-spectrum-far) 34%, transparent)"
+          },
+          "24%": {
+            "color": "var(--sd-spectrum-core)",
+            "opacity": "1",
+            "text-shadow": "0 0 0.06em color-mix(in oklch, var(--sd-spectrum-core) 28%, transparent), calc(0.1em * var(--sd-spectrum-trail-direction)) 0 0.008em color-mix(in oklch, var(--sd-spectrum-near) 50%, transparent), calc(0.24em * var(--sd-spectrum-trail-direction)) 0 0.035em color-mix(in oklch, var(--sd-spectrum-far) 24%, transparent)"
+          },
+          "56%": {
+            "color": "var(--sd-spectrum-near)",
+            "opacity": "1",
+            "text-shadow": "0 0 0.035em color-mix(in oklch, var(--sd-spectrum-near) 14%, transparent), calc(0.04em * var(--sd-spectrum-trail-direction)) 0 0.006em color-mix(in oklch, var(--sd-spectrum-near) 26%, transparent), calc(0.12em * var(--sd-spectrum-trail-direction)) 0 0.025em color-mix(in oklch, var(--sd-spectrum-far) 14%, transparent)"
+          },
+          "80%": {
+            "color": "inherit",
+            "opacity": "1",
+            "text-shadow": "0 0 0.015em color-mix(in oklch, var(--sd-spectrum-near) 6%, transparent), 0 0 0 transparent, 0 0 0 transparent"
+          },
+          "100%": {
+            "color": "inherit",
+            "opacity": "1",
+            "text-shadow": "0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]": {
+          "--sd-spectrum-core": "oklch(0.56 0.25 350)",
+          "--sd-spectrum-near": "oklch(0.5 0.24 305)",
+          "--sd-spectrum-far": "oklch(0.47 0.2 285)",
+          "--sd-spectrum-trail-direction": "-1"
+        },
+        ".dark [data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]": {
+          "--sd-spectrum-core": "oklch(0.78 0.2 350)",
+          "--sd-spectrum-near": "oklch(0.74 0.21 305)",
+          "--sd-spectrum-far": "oklch(0.7 0.19 285)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"] [data-sd-animate]": {
+          "animation-name": "sd-spectrumTrail",
+          "animation-timing-function": "cubic-bezier(0.22, 1, 0.36, 1)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"]:dir(rtl)": {
+          "--sd-spectrum-trail-direction": "1"
+        },
+        "@keyframes sd-magnetize": {
+          "0%": {
+            "opacity": "0",
+            "transform": "var(--sd-magnetize-origin, translate(60px, 30px) rotate(30deg))"
+          },
+          "60%": {
+            "opacity": "1",
+            "transform": "translate(0, 0) rotate(0)"
+          },
+          "80%": {
+            "transform": "translate(0, 0) rotate(0) scale(1.05)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "translate(0, 0) rotate(0) scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 1)": {
+          "--sd-magnetize-origin": "translate(-27px, 23px) rotate(-47deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 2)": {
+          "--sd-magnetize-origin": "translate(-52px, 42px) rotate(-74deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 3)": {
+          "--sd-magnetize-origin": "translate(15px, -3px) rotate(93deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 4)": {
+          "--sd-magnetize-origin": "translate(66px, 48px) rotate(80deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 5)": {
+          "--sd-magnetize-origin": "translate(51px, 5px) rotate(83deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 6)": {
+          "--sd-magnetize-origin": "translate(-56px, 14px) rotate(-54deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 7)": {
+          "--sd-magnetize-origin": "translate(-79px, 1px) rotate(-7deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 8)": {
+          "--sd-magnetize-origin": "translate(-50px, 8px) rotate(-52deg)"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 9)": {
+          "--sd-magnetize-origin": "translate(37px, 9px) rotate(45deg)"
+        },
+        "@keyframes sd-spinIn": {
+          "0%": {
+            "opacity": "0",
+            "transform": "rotate(-720deg) scale(0)"
+          },
+          "65%": {
+            "opacity": "1",
+            "transform": "rotate(20deg) scale(1.12)"
+          },
+          "80%": {
+            "transform": "rotate(-8deg) scale(1.02)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "rotate(0) scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "@keyframes sd-scaleSlam": {
+          "0%": {
+            "opacity": "0",
+            "transform": "scale(2.5)"
+          },
+          "60%": {
+            "opacity": "1",
+            "transform": "scale(0.95)"
+          },
+          "80%": {
+            "transform": "scale(1.02)"
+          },
+          "100%": {
+            "transform": "scale(1)"
+          }
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-animate]": {
+          "position": "relative",
+          "animation": "none"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+          "opacity": "1"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+          "content": "none"
+        },
+        "@media (prefers-reduced-motion: no-preference)": {
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-magnetize 900ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-spinIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+            "opacity": "0"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+            "content": "attr(data-sd-glyph) / \"\"",
+            "position": "absolute",
+            "inset-block-start": "0",
+            "inset-inline-start": "0",
+            "display": "inline-block",
+            "color": "currentColor",
+            "animation": "sd-scaleSlam 700ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+            "pointer-events": "none",
+            "transform-origin": "center",
+            "user-select": "none",
+            "white-space": "pre"
+          }
+        },
+        "@media (forced-colors: active)": {
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"] [data-sd-animate]": {
+            "color": "inherit",
+            "text-shadow": "none",
+            "animation-name": "sd-fadeIn"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 900ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-animate]": {
+            "animation": "sd-fadeIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
+            "opacity": "1"
+          },
+          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
+            "content": "none",
+            "animation": "none"
+          }
+        }
+      }
+    },
+    {
+      "name": "stay-card",
+      "type": "registry:ui",
+      "title": "Stay Card",
+      "description": "Displays a borderless gallery-based hotel result with pricing and rating.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0"
+      ],
+      "registryDependencies": [
+        "@shadcn/carousel",
+        "@shadcn/separator"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/stay-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stay-card-demo",
+      "type": "registry:component",
+      "title": "Stay Card Demo",
+      "description": "Shows a gallery-based hotel result with fixed, licensed travel photography.",
+      "registryDependencies": [
+        "stay-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/stay-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/stay-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mosaic-stay-card",
+      "type": "registry:ui",
+      "title": "Mosaic Stay Card",
+      "description": "Displays a compact hotel result with a three-image mosaic, address, rating, and description.",
+      "dependencies": [
+        "@base-ui/react@^1.6.0",
+        "lucide-react@^1.23.0"
+      ],
+      "registryDependencies": [
+        "@shadcn/card",
+        "@shadcn/separator"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mosaic-stay-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mosaic-stay-card-demo",
+      "type": "registry:component",
+      "title": "Mosaic Stay Card Demo",
+      "description": "Shows a compact three-image hotel card with a rating, address, and short description.",
+      "registryDependencies": [
+        "mosaic-stay-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mosaic-stay-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mosaic-stay-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "weather-condition",
+      "type": "registry:lib",
+      "title": "Weather Condition",
+      "description": "Shared weather condition types, labels, and hosted image mappings.",
+      "files": [
+        {
+          "path": "lib/weather-condition.ts",
+          "type": "registry:lib",
+          "target": "@lib/weather-condition.ts"
+        }
+      ]
+    },
+    {
+      "name": "single-day-weather-card",
+      "type": "registry:ui",
+      "title": "Single-day Weather",
+      "description": "Displays one day's weather in a compact card for conversational interfaces.",
+      "registryDependencies": [
+        "@shadcn/card",
+        "weather-condition"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/single-day-weather-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "single-day-weather-card-demo",
+      "type": "registry:component",
+      "title": "Single-day Weather Demo",
+      "description": "Shows one day's conditions in a compact shadcn weather card.",
+      "registryDependencies": [
+        "single-day-weather-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/single-day-weather-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/single-day-weather-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-day-weather-card",
+      "type": "registry:ui",
+      "title": "Multi-day Weather",
+      "description": "Displays today's conditions and multiple future days.",
+      "registryDependencies": [
+        "@shadcn/card",
+        "weather-condition"
+      ],
+      "categories": [
+        "ai-interfaces"
+      ],
+      "files": [
+        {
+          "path": "components/ui/multi-day-weather-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "multi-day-weather-card-demo",
+      "type": "registry:component",
+      "title": "Multi-day Weather Demo",
+      "description": "Shows today's conditions and five future weather items.",
+      "registryDependencies": [
+        "multi-day-weather-card"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/multi-day-weather-card-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/multi-day-weather-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient",
+      "type": "registry:component",
+      "title": "Grain Gradient",
+      "description": "A warm animated grain gradient for atmospheric visual surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/grain-gradient.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/grain-gradient.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-demo",
+      "type": "registry:component",
+      "title": "Grain Gradient Demo",
+      "description": "A minimal Grain Gradient example.",
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient",
+      "type": "registry:component",
+      "title": "Mesh Gradient",
+      "description": "A fluid blue-green mesh gradient for polished product surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/mesh-gradient.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/mesh-gradient.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-demo",
+      "type": "registry:component",
+      "title": "Mesh Gradient Demo",
+      "description": "A minimal Mesh Gradient example.",
+      "registryDependencies": [
+        "mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mesh-gradient-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mesh-gradient-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise",
+      "type": "registry:component",
+      "title": "Neuro Noise",
+      "description": "A deep cyan-violet noise field for expressive AI visuals.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/neuro-noise.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/neuro-noise.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise-demo",
+      "type": "registry:component",
+      "title": "Neuro Noise Demo",
+      "description": "A minimal Neuro Noise example.",
+      "registryDependencies": [
+        "neuro-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/neuro-noise-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/neuro-noise-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient",
+      "description": "A precise multi-color mesh gradient for polished static and gently animated surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/static-mesh-gradient.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/static-mesh-gradient.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient-demo",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient Demo",
+      "description": "A minimal Static Mesh Gradient example.",
+      "registryDependencies": [
+        "static-mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-mesh-gradient-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-mesh-gradient-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient",
+      "type": "registry:component",
+      "title": "Static Radial Gradient",
+      "description": "A configurable radial color field with focal, distortion, and grain controls.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/static-radial-gradient.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/static-radial-gradient.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient-demo",
+      "type": "registry:component",
+      "title": "Static Radial Gradient Demo",
+      "description": "A minimal Static Radial Gradient example.",
+      "registryDependencies": [
+        "static-radial-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-radial-gradient-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-radial-gradient-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering",
+      "type": "registry:component",
+      "title": "Dithering",
+      "description": "An animated two-color dithering effect for graphic backgrounds and transitions.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/dithering.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/dithering.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "dithering-demo",
+      "type": "registry:component",
+      "title": "Dithering Demo",
+      "description": "A minimal Dithering example.",
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp",
+      "type": "registry:component",
+      "title": "Warp",
+      "description": "Layered color fields warped into fluid checks, stripes, and edges.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/warp.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/warp.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "warp-demo",
+      "type": "registry:component",
+      "title": "Warp Demo",
+      "description": "A minimal Warp example.",
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spiral",
+      "type": "registry:component",
+      "title": "Spiral",
+      "description": "Animated color bands arranged into a configurable spiral field.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/spiral.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/spiral.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "spiral-demo",
+      "type": "registry:component",
+      "title": "Spiral Demo",
+      "description": "A minimal Spiral example.",
+      "registryDependencies": [
+        "spiral"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/spiral-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/spiral-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swirl",
+      "type": "registry:component",
+      "title": "Swirl",
+      "description": "Flowing bands of color twisted into arcs and vortex forms.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/swirl.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/swirl.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "swirl-demo",
+      "type": "registry:component",
+      "title": "Swirl Demo",
+      "description": "A minimal Swirl example.",
+      "registryDependencies": [
+        "swirl"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/swirl-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/swirl-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise",
+      "type": "registry:component",
+      "title": "Perlin Noise",
+      "description": "A soft animated Perlin noise field for organic color motion.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/perlin-noise.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/perlin-noise.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise-demo",
+      "type": "registry:component",
+      "title": "Perlin Noise Demo",
+      "description": "A minimal Perlin Noise example.",
+      "registryDependencies": [
+        "perlin-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/perlin-noise-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/perlin-noise-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise",
+      "type": "registry:component",
+      "title": "Simplex Noise",
+      "description": "A smooth multi-color simplex noise field with continuous movement.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/simplex-noise.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/simplex-noise.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise-demo",
+      "type": "registry:component",
+      "title": "Simplex Noise Demo",
+      "description": "A minimal Simplex Noise example.",
+      "registryDependencies": [
+        "simplex-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/simplex-noise-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/simplex-noise-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voronoi",
+      "type": "registry:component",
+      "title": "Voronoi",
+      "description": "Animated Voronoi cells with configurable gaps, color steps, and glow.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/voronoi.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/voronoi.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "voronoi-demo",
+      "type": "registry:component",
+      "title": "Voronoi Demo",
+      "description": "A minimal Voronoi example.",
+      "registryDependencies": [
+        "voronoi"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voronoi-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voronoi-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border",
+      "type": "registry:component",
+      "title": "Pulsing Border",
+      "description": "A luminous animated border that follows the edges of its canvas.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/pulsing-border.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/pulsing-border.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border-demo",
+      "type": "registry:component",
+      "title": "Pulsing Border Demo",
+      "description": "A minimal Pulsing Border example.",
+      "registryDependencies": [
+        "pulsing-border"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/pulsing-border-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/pulsing-border-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "metaballs",
+      "type": "registry:component",
+      "title": "Metaballs",
+      "description": "Soft color fields that merge into animated organic forms.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/metaballs.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/metaballs.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "metaballs-demo",
+      "type": "registry:component",
+      "title": "Metaballs Demo",
+      "description": "A minimal Metaballs example.",
+      "registryDependencies": [
+        "metaballs"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/metaballs-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/metaballs-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-panels",
+      "type": "registry:component",
+      "title": "Color Panels",
+      "description": "Translucent color panels rotating around a dimensional central axis.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/color-panels.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/color-panels.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-panels-demo",
+      "type": "registry:component",
+      "title": "Color Panels Demo",
+      "description": "A minimal Color Panels example.",
+      "registryDependencies": [
+        "color-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-panels-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-panels-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring",
+      "type": "registry:component",
+      "title": "Smoke Ring",
+      "description": "A luminous ring shaped from animated smoke and color.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/smoke-ring.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/smoke-ring.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring-demo",
+      "type": "registry:component",
+      "title": "Smoke Ring Demo",
+      "description": "A minimal Smoke Ring example.",
+      "registryDependencies": [
+        "smoke-ring"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/smoke-ring-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/smoke-ring-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "god-rays",
+      "type": "registry:component",
+      "title": "God Rays",
+      "description": "Animated volumetric rays for luminous atmospheric surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/god-rays.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/god-rays.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "god-rays-demo",
+      "type": "registry:component",
+      "title": "God Rays Demo",
+      "description": "A minimal God Rays example.",
+      "registryDependencies": [
+        "god-rays"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/god-rays-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/god-rays-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture",
+      "type": "registry:component",
+      "title": "Paper Texture",
+      "description": "A tactile paper and print treatment for images and color surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/paper-texture.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/paper-texture.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture-demo",
+      "type": "registry:component",
+      "title": "Paper Texture Demo",
+      "description": "A minimal Paper Texture example.",
+      "registryDependencies": [
+        "paper-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/paper-texture-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/paper-texture-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass",
+      "type": "registry:component",
+      "title": "Fluted Glass",
+      "description": "A ribbed glass image distortion with configurable highlights and blur.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/fluted-glass.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/fluted-glass.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-demo",
+      "type": "registry:component",
+      "title": "Fluted Glass Demo",
+      "description": "A minimal Fluted Glass example.",
+      "registryDependencies": [
+        "fluted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/fluted-glass-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/fluted-glass-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "water",
+      "type": "registry:component",
+      "title": "Water",
+      "description": "A caustic water distortion for images and standalone animated surfaces.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/water.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/water.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "water-demo",
+      "type": "registry:component",
+      "title": "Water Demo",
+      "description": "A minimal Water example.",
+      "registryDependencies": [
+        "water"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/water-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/water-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering",
+      "type": "registry:component",
+      "title": "Image Dithering",
+      "description": "A graphic two-color dithering filter for photographic images.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/image-dithering.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/image-dithering.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering-demo",
+      "type": "registry:component",
+      "title": "Image Dithering Demo",
+      "description": "A minimal Image Dithering example.",
+      "registryDependencies": [
+        "image-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/image-dithering-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/image-dithering-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots",
+      "type": "registry:component",
+      "title": "Halftone Dots",
+      "description": "A configurable dot-screen halftone treatment for images.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/halftone-dots.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/halftone-dots.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots-demo",
+      "type": "registry:component",
+      "title": "Halftone Dots Demo",
+      "description": "A minimal Halftone Dots example.",
+      "registryDependencies": [
+        "halftone-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-dots-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-dots-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk",
+      "type": "registry:component",
+      "title": "Halftone CMYK",
+      "description": "A layered CMYK print-screen treatment for images.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/halftone-cmyk.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/halftone-cmyk.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk-demo",
+      "type": "registry:component",
+      "title": "Halftone CMYK Demo",
+      "description": "A minimal Halftone CMYK example.",
+      "registryDependencies": [
+        "halftone-cmyk"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-cmyk-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-cmyk-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:component",
+      "title": "Heatmap",
+      "description": "An animated heatmap treatment shaped by a transparent logo or image.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/heatmap.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/heatmap.tsx"
+        },
+        {
+          "path": "components/effects/shader-load-boundary.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/shader-load-boundary.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-demo",
+      "type": "registry:component",
+      "title": "Heatmap Demo",
+      "description": "A minimal Heatmap example.",
+      "registryDependencies": [
+        "heatmap"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/heatmap-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/heatmap-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal",
+      "type": "registry:component",
+      "title": "Liquid Metal",
+      "description": "A reflective liquid-metal treatment for transparent logo shapes.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/liquid-metal.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/liquid-metal.tsx"
+        },
+        {
+          "path": "components/effects/shader-load-boundary.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/shader-load-boundary.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-demo",
+      "type": "registry:component",
+      "title": "Liquid Metal Demo",
+      "description": "A minimal Liquid Metal example.",
+      "registryDependencies": [
+        "liquid-metal"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/liquid-metal-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/liquid-metal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke",
+      "type": "registry:component",
+      "title": "Gem Smoke",
+      "description": "Glassy animated color and smoke contained by a transparent logo shape.",
+      "dependencies": [
+        "@paper-design/shaders-react@0.0.77"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/gem-smoke.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/gem-smoke.tsx"
+        },
+        {
+          "path": "components/effects/shader-load-boundary.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/shader-load-boundary.tsx"
+        },
+        {
+          "path": "hooks/use-shader-playback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-shader-playback.ts"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke-demo",
+      "type": "registry:component",
+      "title": "Gem Smoke Demo",
+      "description": "A minimal Gem Smoke example.",
+      "registryDependencies": [
+        "gem-smoke"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/gem-smoke-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/gem-smoke-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-default-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-wave-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Wave Preset",
+      "description": "Applies Paper Shaders' Wave preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Wave"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-wave-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-wave-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-dots-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Dots Preset",
+      "description": "Applies Paper Shaders' Dots preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Dots"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-dots-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-dots-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-truchet-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Truchet Preset",
+      "description": "Applies Paper Shaders' Truchet preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Truchet"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-truchet-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-truchet-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-ripple-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Ripple Preset",
+      "description": "Applies Paper Shaders' Ripple preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Ripple"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-ripple-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-ripple-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grain-gradient-blob-preset",
+      "type": "registry:component",
+      "title": "Grain Gradient Blob Preset",
+      "description": "Applies Paper Shaders' Blob preset to Grain Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "grain-gradient",
+        "presetName": "Blob"
+      },
+      "registryDependencies": [
+        "grain-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/grain-gradient-blob-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/grain-gradient-blob-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-default-preset",
+      "type": "registry:component",
+      "title": "Mesh Gradient Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "mesh-gradient",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mesh-gradient-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mesh-gradient-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-ink-preset",
+      "type": "registry:component",
+      "title": "Mesh Gradient Ink Preset",
+      "description": "Applies Paper Shaders' Ink preset to Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "mesh-gradient",
+        "presetName": "Ink"
+      },
+      "registryDependencies": [
+        "mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mesh-gradient-ink-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mesh-gradient-ink-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-purple-preset",
+      "type": "registry:component",
+      "title": "Mesh Gradient Purple Preset",
+      "description": "Applies Paper Shaders' Purple preset to Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "mesh-gradient",
+        "presetName": "Purple"
+      },
+      "registryDependencies": [
+        "mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mesh-gradient-purple-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mesh-gradient-purple-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-beach-preset",
+      "type": "registry:component",
+      "title": "Mesh Gradient Beach Preset",
+      "description": "Applies Paper Shaders' Beach preset to Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "mesh-gradient",
+        "presetName": "Beach"
+      },
+      "registryDependencies": [
+        "mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/mesh-gradient-beach-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/mesh-gradient-beach-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise-default-preset",
+      "type": "registry:component",
+      "title": "Neuro Noise Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Neuro Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "neuro-noise",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "neuro-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/neuro-noise-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/neuro-noise-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise-sensation-preset",
+      "type": "registry:component",
+      "title": "Neuro Noise Sensation Preset",
+      "description": "Applies Paper Shaders' Sensation preset to Neuro Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "neuro-noise",
+        "presetName": "Sensation"
+      },
+      "registryDependencies": [
+        "neuro-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/neuro-noise-sensation-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/neuro-noise-sensation-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise-bloodstream-preset",
+      "type": "registry:component",
+      "title": "Neuro Noise Bloodstream Preset",
+      "description": "Applies Paper Shaders' Bloodstream preset to Neuro Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "neuro-noise",
+        "presetName": "Bloodstream"
+      },
+      "registryDependencies": [
+        "neuro-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/neuro-noise-bloodstream-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/neuro-noise-bloodstream-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neuro-noise-ghost-preset",
+      "type": "registry:component",
+      "title": "Neuro Noise Ghost Preset",
+      "description": "Applies Paper Shaders' Ghost preset to Neuro Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "neuro-noise",
+        "presetName": "Ghost"
+      },
+      "registryDependencies": [
+        "neuro-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/neuro-noise-ghost-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/neuro-noise-ghost-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient-default-preset",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Static Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-mesh-gradient",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "static-mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-mesh-gradient-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-mesh-gradient-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient-1960s-preset",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient 1960s Preset",
+      "description": "Applies Paper Shaders' 1960s preset to Static Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-mesh-gradient",
+        "presetName": "1960s"
+      },
+      "registryDependencies": [
+        "static-mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-mesh-gradient-1960s-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-mesh-gradient-1960s-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient-sunset-preset",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient Sunset Preset",
+      "description": "Applies Paper Shaders' Sunset preset to Static Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-mesh-gradient",
+        "presetName": "Sunset"
+      },
+      "registryDependencies": [
+        "static-mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-mesh-gradient-sunset-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-mesh-gradient-sunset-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-mesh-gradient-sea-preset",
+      "type": "registry:component",
+      "title": "Static Mesh Gradient Sea Preset",
+      "description": "Applies Paper Shaders' Sea preset to Static Mesh Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-mesh-gradient",
+        "presetName": "Sea"
+      },
+      "registryDependencies": [
+        "static-mesh-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-mesh-gradient-sea-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-mesh-gradient-sea-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient-default-preset",
+      "type": "registry:component",
+      "title": "Static Radial Gradient Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Static Radial Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-radial-gradient",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "static-radial-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-radial-gradient-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-radial-gradient-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient-lo-fi-preset",
+      "type": "registry:component",
+      "title": "Static Radial Gradient Lo-Fi Preset",
+      "description": "Applies Paper Shaders' Lo-Fi preset to Static Radial Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-radial-gradient",
+        "presetName": "Lo-Fi"
+      },
+      "registryDependencies": [
+        "static-radial-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-radial-gradient-lo-fi-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-radial-gradient-lo-fi-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient-cross-section-preset",
+      "type": "registry:component",
+      "title": "Static Radial Gradient Cross Section Preset",
+      "description": "Applies Paper Shaders' Cross Section preset to Static Radial Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-radial-gradient",
+        "presetName": "Cross Section"
+      },
+      "registryDependencies": [
+        "static-radial-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-radial-gradient-cross-section-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-radial-gradient-cross-section-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "static-radial-gradient-radial-preset",
+      "type": "registry:component",
+      "title": "Static Radial Gradient Radial Preset",
+      "description": "Applies Paper Shaders' Radial preset to Static Radial Gradient.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "static-radial-gradient",
+        "presetName": "Radial"
+      },
+      "registryDependencies": [
+        "static-radial-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/static-radial-gradient-radial-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/static-radial-gradient-radial-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-default-preset",
+      "type": "registry:component",
+      "title": "Dithering Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-warp-preset",
+      "type": "registry:component",
+      "title": "Dithering Warp Preset",
+      "description": "Applies Paper Shaders' Warp preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Warp"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-warp-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-warp-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-sine-wave-preset",
+      "type": "registry:component",
+      "title": "Dithering Sine Wave Preset",
+      "description": "Applies Paper Shaders' Sine Wave preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Sine Wave"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-sine-wave-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-sine-wave-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-ripple-preset",
+      "type": "registry:component",
+      "title": "Dithering Ripple Preset",
+      "description": "Applies Paper Shaders' Ripple preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Ripple"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-ripple-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-ripple-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-bugs-preset",
+      "type": "registry:component",
+      "title": "Dithering Bugs Preset",
+      "description": "Applies Paper Shaders' Bugs preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Bugs"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-bugs-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-bugs-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dithering-swirl-preset",
+      "type": "registry:component",
+      "title": "Dithering Swirl Preset",
+      "description": "Applies Paper Shaders' Swirl preset to Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "dithering",
+        "presetName": "Swirl"
+      },
+      "registryDependencies": [
+        "dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/dithering-swirl-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/dithering-swirl-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-default-preset",
+      "type": "registry:component",
+      "title": "Warp Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-cauldron-pot-preset",
+      "type": "registry:component",
+      "title": "Warp Cauldron Pot Preset",
+      "description": "Applies Paper Shaders' Cauldron Pot preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Cauldron Pot"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-cauldron-pot-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-cauldron-pot-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-live-ink-preset",
+      "type": "registry:component",
+      "title": "Warp Live Ink Preset",
+      "description": "Applies Paper Shaders' Live Ink preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Live Ink"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-live-ink-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-live-ink-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-kelp-preset",
+      "type": "registry:component",
+      "title": "Warp Kelp Preset",
+      "description": "Applies Paper Shaders' Kelp preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Kelp"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-kelp-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-kelp-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-nectar-preset",
+      "type": "registry:component",
+      "title": "Warp Nectar Preset",
+      "description": "Applies Paper Shaders' Nectar preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Nectar"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-nectar-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-nectar-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-passion-preset",
+      "type": "registry:component",
+      "title": "Warp Passion Preset",
+      "description": "Applies Paper Shaders' Passion preset to Warp.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "warp",
+        "presetName": "Passion"
+      },
+      "registryDependencies": [
+        "warp"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/warp-passion-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/warp-passion-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spiral-default-preset",
+      "type": "registry:component",
+      "title": "Spiral Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Spiral.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "spiral",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "spiral"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/spiral-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/spiral-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spiral-jungle-preset",
+      "type": "registry:component",
+      "title": "Spiral Jungle Preset",
+      "description": "Applies Paper Shaders' Jungle preset to Spiral.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "spiral",
+        "presetName": "Jungle"
+      },
+      "registryDependencies": [
+        "spiral"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/spiral-jungle-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/spiral-jungle-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spiral-droplet-preset",
+      "type": "registry:component",
+      "title": "Spiral Droplet Preset",
+      "description": "Applies Paper Shaders' Droplet preset to Spiral.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "spiral",
+        "presetName": "Droplet"
+      },
+      "registryDependencies": [
+        "spiral"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/spiral-droplet-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/spiral-droplet-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spiral-swirl-preset",
+      "type": "registry:component",
+      "title": "Spiral Swirl Preset",
+      "description": "Applies Paper Shaders' Swirl preset to Spiral.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "spiral",
+        "presetName": "Swirl"
+      },
+      "registryDependencies": [
+        "spiral"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/spiral-swirl-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/spiral-swirl-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swirl-default-preset",
+      "type": "registry:component",
+      "title": "Swirl Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Swirl.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "swirl",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "swirl"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/swirl-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/swirl-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swirl-007-preset",
+      "type": "registry:component",
+      "title": "Swirl 007 Preset",
+      "description": "Applies Paper Shaders' 007 preset to Swirl.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "swirl",
+        "presetName": "007"
+      },
+      "registryDependencies": [
+        "swirl"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/swirl-007-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/swirl-007-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swirl-opening-preset",
+      "type": "registry:component",
+      "title": "Swirl Opening Preset",
+      "description": "Applies Paper Shaders' Opening preset to Swirl.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "swirl",
+        "presetName": "Opening"
+      },
+      "registryDependencies": [
+        "swirl"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/swirl-opening-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/swirl-opening-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swirl-candy-preset",
+      "type": "registry:component",
+      "title": "Swirl Candy Preset",
+      "description": "Applies Paper Shaders' Candy preset to Swirl.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "swirl",
+        "presetName": "Candy"
+      },
+      "registryDependencies": [
+        "swirl"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/swirl-candy-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/swirl-candy-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise-default-preset",
+      "type": "registry:component",
+      "title": "Perlin Noise Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Perlin Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "perlin-noise",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "perlin-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/perlin-noise-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/perlin-noise-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise-nintendo-water-preset",
+      "type": "registry:component",
+      "title": "Perlin Noise Nintendo Water Preset",
+      "description": "Applies Paper Shaders' Nintendo Water preset to Perlin Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "perlin-noise",
+        "presetName": "Nintendo Water"
+      },
+      "registryDependencies": [
+        "perlin-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/perlin-noise-nintendo-water-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/perlin-noise-nintendo-water-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise-moss-preset",
+      "type": "registry:component",
+      "title": "Perlin Noise Moss Preset",
+      "description": "Applies Paper Shaders' Moss preset to Perlin Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "perlin-noise",
+        "presetName": "Moss"
+      },
+      "registryDependencies": [
+        "perlin-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/perlin-noise-moss-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/perlin-noise-moss-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perlin-noise-worms-preset",
+      "type": "registry:component",
+      "title": "Perlin Noise Worms Preset",
+      "description": "Applies Paper Shaders' Worms preset to Perlin Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "perlin-noise",
+        "presetName": "Worms"
+      },
+      "registryDependencies": [
+        "perlin-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/perlin-noise-worms-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/perlin-noise-worms-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise-default-preset",
+      "type": "registry:component",
+      "title": "Simplex Noise Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Simplex Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "simplex-noise",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "simplex-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/simplex-noise-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/simplex-noise-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise-spots-preset",
+      "type": "registry:component",
+      "title": "Simplex Noise Spots Preset",
+      "description": "Applies Paper Shaders' Spots preset to Simplex Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "simplex-noise",
+        "presetName": "Spots"
+      },
+      "registryDependencies": [
+        "simplex-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/simplex-noise-spots-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/simplex-noise-spots-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise-first-contact-preset",
+      "type": "registry:component",
+      "title": "Simplex Noise First contact Preset",
+      "description": "Applies Paper Shaders' First contact preset to Simplex Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "simplex-noise",
+        "presetName": "First contact"
+      },
+      "registryDependencies": [
+        "simplex-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/simplex-noise-first-contact-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/simplex-noise-first-contact-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simplex-noise-bubblegum-preset",
+      "type": "registry:component",
+      "title": "Simplex Noise Bubblegum Preset",
+      "description": "Applies Paper Shaders' Bubblegum preset to Simplex Noise.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "simplex-noise",
+        "presetName": "Bubblegum"
+      },
+      "registryDependencies": [
+        "simplex-noise"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/simplex-noise-bubblegum-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/simplex-noise-bubblegum-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voronoi-default-preset",
+      "type": "registry:component",
+      "title": "Voronoi Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Voronoi.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "voronoi",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "voronoi"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voronoi-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voronoi-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voronoi-lights-preset",
+      "type": "registry:component",
+      "title": "Voronoi Lights Preset",
+      "description": "Applies Paper Shaders' Lights preset to Voronoi.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "voronoi",
+        "presetName": "Lights"
+      },
+      "registryDependencies": [
+        "voronoi"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voronoi-lights-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voronoi-lights-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voronoi-cells-preset",
+      "type": "registry:component",
+      "title": "Voronoi Cells Preset",
+      "description": "Applies Paper Shaders' Cells preset to Voronoi.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "voronoi",
+        "presetName": "Cells"
+      },
+      "registryDependencies": [
+        "voronoi"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voronoi-cells-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voronoi-cells-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voronoi-bubbles-preset",
+      "type": "registry:component",
+      "title": "Voronoi Bubbles Preset",
+      "description": "Applies Paper Shaders' Bubbles preset to Voronoi.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "voronoi",
+        "presetName": "Bubbles"
+      },
+      "registryDependencies": [
+        "voronoi"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/voronoi-bubbles-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/voronoi-bubbles-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border-default-preset",
+      "type": "registry:component",
+      "title": "Pulsing Border Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Pulsing Border.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "pulsing-border",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "pulsing-border"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/pulsing-border-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/pulsing-border-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border-circle-preset",
+      "type": "registry:component",
+      "title": "Pulsing Border Circle Preset",
+      "description": "Applies Paper Shaders' Circle preset to Pulsing Border.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "pulsing-border",
+        "presetName": "Circle"
+      },
+      "registryDependencies": [
+        "pulsing-border"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/pulsing-border-circle-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/pulsing-border-circle-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border-northern-lights-preset",
+      "type": "registry:component",
+      "title": "Pulsing Border Northern lights Preset",
+      "description": "Applies Paper Shaders' Northern lights preset to Pulsing Border.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "pulsing-border",
+        "presetName": "Northern lights"
+      },
+      "registryDependencies": [
+        "pulsing-border"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/pulsing-border-northern-lights-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/pulsing-border-northern-lights-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsing-border-solid-line-preset",
+      "type": "registry:component",
+      "title": "Pulsing Border Solid line Preset",
+      "description": "Applies Paper Shaders' Solid line preset to Pulsing Border.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "pulsing-border",
+        "presetName": "Solid line"
+      },
+      "registryDependencies": [
+        "pulsing-border"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/pulsing-border-solid-line-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/pulsing-border-solid-line-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "metaballs-default-preset",
+      "type": "registry:component",
+      "title": "Metaballs Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Metaballs.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "metaballs",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "metaballs"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/metaballs-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/metaballs-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "metaballs-ink-drops-preset",
+      "type": "registry:component",
+      "title": "Metaballs Ink Drops Preset",
+      "description": "Applies Paper Shaders' Ink Drops preset to Metaballs.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "metaballs",
+        "presetName": "Ink Drops"
+      },
+      "registryDependencies": [
+        "metaballs"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/metaballs-ink-drops-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/metaballs-ink-drops-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "metaballs-solar-preset",
+      "type": "registry:component",
+      "title": "Metaballs Solar Preset",
+      "description": "Applies Paper Shaders' Solar preset to Metaballs.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "metaballs",
+        "presetName": "Solar"
+      },
+      "registryDependencies": [
+        "metaballs"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/metaballs-solar-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/metaballs-solar-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "metaballs-background-preset",
+      "type": "registry:component",
+      "title": "Metaballs Background Preset",
+      "description": "Applies Paper Shaders' Background preset to Metaballs.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "metaballs",
+        "presetName": "Background"
+      },
+      "registryDependencies": [
+        "metaballs"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/metaballs-background-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/metaballs-background-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-panels-default-preset",
+      "type": "registry:component",
+      "title": "Color Panels Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Color Panels.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "color-panels",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "color-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-panels-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-panels-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-panels-glass-preset",
+      "type": "registry:component",
+      "title": "Color Panels Glass Preset",
+      "description": "Applies Paper Shaders' Glass preset to Color Panels.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "color-panels",
+        "presetName": "Glass"
+      },
+      "registryDependencies": [
+        "color-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-panels-glass-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-panels-glass-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-panels-gradient-preset",
+      "type": "registry:component",
+      "title": "Color Panels Gradient Preset",
+      "description": "Applies Paper Shaders' Gradient preset to Color Panels.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "color-panels",
+        "presetName": "Gradient"
+      },
+      "registryDependencies": [
+        "color-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-panels-gradient-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-panels-gradient-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-panels-opening-preset",
+      "type": "registry:component",
+      "title": "Color Panels Opening Preset",
+      "description": "Applies Paper Shaders' Opening preset to Color Panels.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "color-panels",
+        "presetName": "Opening"
+      },
+      "registryDependencies": [
+        "color-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-panels-opening-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-panels-opening-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring-default-preset",
+      "type": "registry:component",
+      "title": "Smoke Ring Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Smoke Ring.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "smoke-ring",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "smoke-ring"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/smoke-ring-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/smoke-ring-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring-line-preset",
+      "type": "registry:component",
+      "title": "Smoke Ring Line Preset",
+      "description": "Applies Paper Shaders' Line preset to Smoke Ring.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "smoke-ring",
+        "presetName": "Line"
+      },
+      "registryDependencies": [
+        "smoke-ring"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/smoke-ring-line-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/smoke-ring-line-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring-solar-preset",
+      "type": "registry:component",
+      "title": "Smoke Ring Solar Preset",
+      "description": "Applies Paper Shaders' Solar preset to Smoke Ring.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "smoke-ring",
+        "presetName": "Solar"
+      },
+      "registryDependencies": [
+        "smoke-ring"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/smoke-ring-solar-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/smoke-ring-solar-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smoke-ring-cloud-preset",
+      "type": "registry:component",
+      "title": "Smoke Ring Cloud Preset",
+      "description": "Applies Paper Shaders' Cloud preset to Smoke Ring.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "smoke-ring",
+        "presetName": "Cloud"
+      },
+      "registryDependencies": [
+        "smoke-ring"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/smoke-ring-cloud-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/smoke-ring-cloud-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "god-rays-default-preset",
+      "type": "registry:component",
+      "title": "God Rays Default Preset",
+      "description": "Applies Paper Shaders' Default preset to God Rays.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "god-rays",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "god-rays"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/god-rays-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/god-rays-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "god-rays-warp-preset",
+      "type": "registry:component",
+      "title": "God Rays Warp Preset",
+      "description": "Applies Paper Shaders' Warp preset to God Rays.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "god-rays",
+        "presetName": "Warp"
+      },
+      "registryDependencies": [
+        "god-rays"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/god-rays-warp-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/god-rays-warp-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "god-rays-linear-preset",
+      "type": "registry:component",
+      "title": "God Rays Linear Preset",
+      "description": "Applies Paper Shaders' Linear preset to God Rays.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "god-rays",
+        "presetName": "Linear"
+      },
+      "registryDependencies": [
+        "god-rays"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/god-rays-linear-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/god-rays-linear-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "god-rays-ether-preset",
+      "type": "registry:component",
+      "title": "God Rays Ether Preset",
+      "description": "Applies Paper Shaders' Ether preset to God Rays.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "god-rays",
+        "presetName": "Ether"
+      },
+      "registryDependencies": [
+        "god-rays"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/god-rays-ether-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/god-rays-ether-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture-default-preset",
+      "type": "registry:component",
+      "title": "Paper Texture Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Paper Texture.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "paper-texture",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "paper-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/paper-texture-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/paper-texture-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture-cardboard-preset",
+      "type": "registry:component",
+      "title": "Paper Texture Cardboard Preset",
+      "description": "Applies Paper Shaders' Cardboard preset to Paper Texture.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "paper-texture",
+        "presetName": "Cardboard"
+      },
+      "registryDependencies": [
+        "paper-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/paper-texture-cardboard-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/paper-texture-cardboard-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture-abstract-preset",
+      "type": "registry:component",
+      "title": "Paper Texture Abstract Preset",
+      "description": "Applies Paper Shaders' Abstract preset to Paper Texture.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "paper-texture",
+        "presetName": "Abstract"
+      },
+      "registryDependencies": [
+        "paper-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/paper-texture-abstract-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/paper-texture-abstract-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-texture-details-preset",
+      "type": "registry:component",
+      "title": "Paper Texture Details Preset",
+      "description": "Applies Paper Shaders' Details preset to Paper Texture.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "paper-texture",
+        "presetName": "Details"
+      },
+      "registryDependencies": [
+        "paper-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/paper-texture-details-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/paper-texture-details-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-default-preset",
+      "type": "registry:component",
+      "title": "Fluted Glass Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Fluted Glass.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "fluted-glass",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "fluted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/fluted-glass-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/fluted-glass-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-abstract-preset",
+      "type": "registry:component",
+      "title": "Fluted Glass Abstract Preset",
+      "description": "Applies Paper Shaders' Abstract preset to Fluted Glass.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "fluted-glass",
+        "presetName": "Abstract"
+      },
+      "registryDependencies": [
+        "fluted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/fluted-glass-abstract-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/fluted-glass-abstract-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-waves-preset",
+      "type": "registry:component",
+      "title": "Fluted Glass Waves Preset",
+      "description": "Applies Paper Shaders' Waves preset to Fluted Glass.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "fluted-glass",
+        "presetName": "Waves"
+      },
+      "registryDependencies": [
+        "fluted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/fluted-glass-waves-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/fluted-glass-waves-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-folds-preset",
+      "type": "registry:component",
+      "title": "Fluted Glass Folds Preset",
+      "description": "Applies Paper Shaders' Folds preset to Fluted Glass.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "fluted-glass",
+        "presetName": "Folds"
+      },
+      "registryDependencies": [
+        "fluted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/fluted-glass-folds-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/fluted-glass-folds-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "water-default-preset",
+      "type": "registry:component",
+      "title": "Water Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Water.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "water",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "water"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/water-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/water-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "water-slow-mo-preset",
+      "type": "registry:component",
+      "title": "Water Slow-mo Preset",
+      "description": "Applies Paper Shaders' Slow-mo preset to Water.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "water",
+        "presetName": "Slow-mo"
+      },
+      "registryDependencies": [
+        "water"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/water-slow-mo-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/water-slow-mo-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "water-abstract-preset",
+      "type": "registry:component",
+      "title": "Water Abstract Preset",
+      "description": "Applies Paper Shaders' Abstract preset to Water.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "water",
+        "presetName": "Abstract"
+      },
+      "registryDependencies": [
+        "water"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/water-abstract-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/water-abstract-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "water-streaming-preset",
+      "type": "registry:component",
+      "title": "Water Streaming Preset",
+      "description": "Applies Paper Shaders' Streaming preset to Water.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "water",
+        "presetName": "Streaming"
+      },
+      "registryDependencies": [
+        "water"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/water-streaming-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/water-streaming-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering-default-preset",
+      "type": "registry:component",
+      "title": "Image Dithering Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Image Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "image-dithering",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "image-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/image-dithering-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/image-dithering-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering-noise-preset",
+      "type": "registry:component",
+      "title": "Image Dithering Noise Preset",
+      "description": "Applies Paper Shaders' Noise preset to Image Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "image-dithering",
+        "presetName": "Noise"
+      },
+      "registryDependencies": [
+        "image-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/image-dithering-noise-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/image-dithering-noise-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering-retro-preset",
+      "type": "registry:component",
+      "title": "Image Dithering Retro Preset",
+      "description": "Applies Paper Shaders' Retro preset to Image Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "image-dithering",
+        "presetName": "Retro"
+      },
+      "registryDependencies": [
+        "image-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/image-dithering-retro-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/image-dithering-retro-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-dithering-natural-preset",
+      "type": "registry:component",
+      "title": "Image Dithering Natural Preset",
+      "description": "Applies Paper Shaders' Natural preset to Image Dithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "image-dithering",
+        "presetName": "Natural"
+      },
+      "registryDependencies": [
+        "image-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/image-dithering-natural-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/image-dithering-natural-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots-default-preset",
+      "type": "registry:component",
+      "title": "Halftone Dots Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Halftone Dots.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-dots",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "halftone-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-dots-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-dots-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots-led-screen-preset",
+      "type": "registry:component",
+      "title": "Halftone Dots LED screen Preset",
+      "description": "Applies Paper Shaders' LED screen preset to Halftone Dots.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-dots",
+        "presetName": "LED screen"
+      },
+      "registryDependencies": [
+        "halftone-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-dots-led-screen-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-dots-led-screen-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots-mosaic-preset",
+      "type": "registry:component",
+      "title": "Halftone Dots Mosaic Preset",
+      "description": "Applies Paper Shaders' Mosaic preset to Halftone Dots.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-dots",
+        "presetName": "Mosaic"
+      },
+      "registryDependencies": [
+        "halftone-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-dots-mosaic-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-dots-mosaic-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-dots-round-and-square-preset",
+      "type": "registry:component",
+      "title": "Halftone Dots Round and square Preset",
+      "description": "Applies Paper Shaders' Round and square preset to Halftone Dots.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-dots",
+        "presetName": "Round and square"
+      },
+      "registryDependencies": [
+        "halftone-dots"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-dots-round-and-square-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-dots-round-and-square-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk-default-preset",
+      "type": "registry:component",
+      "title": "Halftone CMYK Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Halftone CMYK.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-cmyk",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "halftone-cmyk"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-cmyk-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-cmyk-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk-drops-preset",
+      "type": "registry:component",
+      "title": "Halftone CMYK Drops Preset",
+      "description": "Applies Paper Shaders' Drops preset to Halftone CMYK.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-cmyk",
+        "presetName": "Drops"
+      },
+      "registryDependencies": [
+        "halftone-cmyk"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-cmyk-drops-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-cmyk-drops-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk-newspaper-preset",
+      "type": "registry:component",
+      "title": "Halftone CMYK Newspaper Preset",
+      "description": "Applies Paper Shaders' Newspaper preset to Halftone CMYK.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-cmyk",
+        "presetName": "Newspaper"
+      },
+      "registryDependencies": [
+        "halftone-cmyk"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-cmyk-newspaper-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-cmyk-newspaper-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone-cmyk-vintage-preset",
+      "type": "registry:component",
+      "title": "Halftone CMYK Vintage Preset",
+      "description": "Applies Paper Shaders' Vintage preset to Halftone CMYK.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "halftone-cmyk",
+        "presetName": "Vintage"
+      },
+      "registryDependencies": [
+        "halftone-cmyk"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/halftone-cmyk-vintage-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/halftone-cmyk-vintage-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-default-preset",
+      "type": "registry:component",
+      "title": "Heatmap Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Heatmap.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "heatmap",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "heatmap"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/heatmap-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/heatmap-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heatmap-sepia-preset",
+      "type": "registry:component",
+      "title": "Heatmap Sepia Preset",
+      "description": "Applies Paper Shaders' Sepia preset to Heatmap.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "heatmap",
+        "presetName": "Sepia"
+      },
+      "registryDependencies": [
+        "heatmap"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/heatmap-sepia-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/heatmap-sepia-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-default-preset",
+      "type": "registry:component",
+      "title": "Liquid Metal Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Liquid Metal.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "liquid-metal",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "liquid-metal"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/liquid-metal-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/liquid-metal-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-noir-preset",
+      "type": "registry:component",
+      "title": "Liquid Metal Noir Preset",
+      "description": "Applies Paper Shaders' Noir preset to Liquid Metal.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "liquid-metal",
+        "presetName": "Noir"
+      },
+      "registryDependencies": [
+        "liquid-metal"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/liquid-metal-noir-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/liquid-metal-noir-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-backdrop-preset",
+      "type": "registry:component",
+      "title": "Liquid Metal Backdrop Preset",
+      "description": "Applies Paper Shaders' Backdrop preset to Liquid Metal.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "liquid-metal",
+        "presetName": "Backdrop"
+      },
+      "registryDependencies": [
+        "liquid-metal"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/liquid-metal-backdrop-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/liquid-metal-backdrop-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-stripes-preset",
+      "type": "registry:component",
+      "title": "Liquid Metal Stripes Preset",
+      "description": "Applies Paper Shaders' Stripes preset to Liquid Metal.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "liquid-metal",
+        "presetName": "Stripes"
+      },
+      "registryDependencies": [
+        "liquid-metal"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/liquid-metal-stripes-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/liquid-metal-stripes-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke-default-preset",
+      "type": "registry:component",
+      "title": "Gem Smoke Default Preset",
+      "description": "Applies Paper Shaders' Default preset to Gem Smoke.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "gem-smoke",
+        "presetName": "Default"
+      },
+      "registryDependencies": [
+        "gem-smoke"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/gem-smoke-default-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/gem-smoke-default-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke-fire-preset",
+      "type": "registry:component",
+      "title": "Gem Smoke Fire Preset",
+      "description": "Applies Paper Shaders' Fire preset to Gem Smoke.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "gem-smoke",
+        "presetName": "Fire"
+      },
+      "registryDependencies": [
+        "gem-smoke"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/gem-smoke-fire-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/gem-smoke-fire-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke-fluorescent-preset",
+      "type": "registry:component",
+      "title": "Gem Smoke Fluorescent Preset",
+      "description": "Applies Paper Shaders' Fluorescent preset to Gem Smoke.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "gem-smoke",
+        "presetName": "Fluorescent"
+      },
+      "registryDependencies": [
+        "gem-smoke"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/gem-smoke-fluorescent-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/gem-smoke-fluorescent-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gem-smoke-infrared-preset",
+      "type": "registry:component",
+      "title": "Gem Smoke Infrared Preset",
+      "description": "Applies Paper Shaders' Infrared preset to Gem Smoke.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "paper-preset",
+        "variantOf": "gem-smoke",
+        "presetName": "Infrared"
+      },
+      "registryDependencies": [
+        "gem-smoke"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/gem-smoke-infrared-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/gem-smoke-infrared-preset.tsx"
+        }
+      ]
+    }
+  ]
+}
