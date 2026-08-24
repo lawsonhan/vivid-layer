@@ -5,6 +5,7 @@ import { Fragment } from "react"
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import {
   ChatMinimap,
+  ChatMinimapContainer,
   type ChatMinimapItem,
   type ChatMinimapProps,
 } from "@/components/ui/chat-minimap"
@@ -17,7 +18,6 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
 } from "@/components/ui/message-scroller"
-import { cn } from "@/lib/utils"
 
 const turns = [
   {
@@ -199,33 +199,15 @@ type ChatMinimapDemoProps = {
 export default function ChatMinimapDemo({
   minimapProps,
 }: ChatMinimapDemoProps = {}) {
-  const minimapOnRight = minimapProps?.side === "right"
-
   return (
     <MessageScrollerProvider scrollMargin={12}>
       <div className="flex h-[42rem] w-full items-center justify-center p-4 sm:p-6">
-        <div
-          className={cn(
-            "grid h-[36rem] w-full max-w-2xl overflow-hidden rounded-xl bg-background",
-            minimapOnRight
-              ? "grid-cols-[minmax(0,1fr)_4rem]"
-              : "grid-cols-[4rem_minmax(0,1fr)]"
-          )}
+        <ChatMinimapContainer
+          side={minimapProps?.side}
+          className="h-[36rem] w-full max-w-2xl overflow-hidden rounded-xl bg-background"
         >
-          <ChatMinimap
-            items={turns}
-            className={cn(
-              "row-start-1 self-center justify-self-center",
-              minimapOnRight ? "col-start-2" : "col-start-1"
-            )}
-            {...minimapProps}
-          />
-          <MessageScroller
-            className={cn(
-              "row-start-1",
-              minimapOnRight ? "col-start-1" : "col-start-2"
-            )}
-          >
+          <ChatMinimap items={turns} {...minimapProps} />
+          <MessageScroller>
             <MessageScrollerViewport>
               <MessageScrollerContent className="p-4 sm:p-6">
                 {turns.map(({ id, title, description }) => (
@@ -246,7 +228,7 @@ export default function ChatMinimapDemo({
             </MessageScrollerViewport>
             <MessageScrollerButton />
           </MessageScroller>
-        </div>
+        </ChatMinimapContainer>
       </div>
     </MessageScrollerProvider>
   )

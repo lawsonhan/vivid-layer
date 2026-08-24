@@ -11,10 +11,8 @@ import {
 import {
   AnimatePresence,
   motion,
-  MotionConfig,
   resize,
   useIsPresent,
-  useReducedMotion,
   type Transition,
   type Variants,
 } from "motion/react"
@@ -691,7 +689,6 @@ function PlanComposer({
   const [surfaceHeight, setSurfaceHeight] = React.useState<number | "auto">(
     "auto",
   )
-  const shouldReduceMotion = useReducedMotion()
   const showPlan = open && questions.length > 0
   const modeDirection: Direction = showPlan ? 1 : -1
   const sessionKey = questions.map((question) => question.id).join(" ")
@@ -725,72 +722,68 @@ function PlanComposer({
   }
 
   return (
-    <MotionConfig reducedMotion="user">
-      <form
-        className={cn(
-          "relative h-[52px] w-[min(720px,calc(100vw-32px))]",
-          className,
-        )}
-        data-slot="plan-composer"
-        onSubmit={handleSubmit}
-        {...props}
+    <form
+      className={cn(
+        "relative h-[52px] w-[min(720px,calc(100vw-32px))]",
+        className,
+      )}
+      data-slot="plan-composer"
+      onSubmit={handleSubmit}
+      {...props}
+    >
+      <motion.div
+        animate={{ height: surfaceHeight }}
+        className="absolute inset-x-0 bottom-0 overflow-hidden rounded-3xl border border-input bg-popover shadow-xl shadow-black/8 transition-[border-color,box-shadow] has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50"
+        initial={false}
+        transition={surfaceTransition}
       >
-        <motion.div
-          animate={{ height: surfaceHeight }}
-          className="absolute inset-x-0 bottom-0 overflow-hidden rounded-3xl border border-input bg-popover shadow-xl shadow-black/8 transition-[border-color,box-shadow] has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50"
-          initial={false}
-          transition={
-            shouldReduceMotion ? { duration: 0 } : surfaceTransition
-          }
-        >
-          <div ref={measureRef}>
-            <AnimatePresence
-              custom={modeDirection}
-              initial={false}
-              mode="popLayout"
-            >
-              {showPlan ? (
-                <PresencePage
-                  animate="center"
-                  className="relative w-full"
-                  custom={modeDirection}
-                  data-slot="plan-composer-mode"
-                  exit="exit"
-                  initial="enter"
-                  key={`plan:${sessionKey}`}
-                  variants={modeVariants}
-                >
-                  <PlanFlow
-                    notePlaceholder={notePlaceholder}
-                    onCancel={onCancel}
-                    onComplete={onComplete}
-                    onOpenChange={onOpenChange}
-                    questions={questions}
-                  />
-                </PresencePage>
-              ) : (
-                <PresencePage
-                  animate="center"
-                  className="relative w-full"
-                  custom={modeDirection}
-                  data-slot="plan-composer-composer"
-                  exit="exit"
-                  initial="enter"
-                  key="composer"
-                  variants={modeVariants}
-                >
-                  <ComposerInput
-                    onPromptChange={setPrompt}
-                    placeholder={promptPlaceholder}
-                    prompt={prompt}
-                  />
-                </PresencePage>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </form>
-    </MotionConfig>
+        <div ref={measureRef}>
+          <AnimatePresence
+            custom={modeDirection}
+            initial={false}
+            mode="popLayout"
+          >
+            {showPlan ? (
+              <PresencePage
+                animate="center"
+                className="relative w-full"
+                custom={modeDirection}
+                data-slot="plan-composer-mode"
+                exit="exit"
+                initial="enter"
+                key={`plan:${sessionKey}`}
+                variants={modeVariants}
+              >
+                <PlanFlow
+                  notePlaceholder={notePlaceholder}
+                  onCancel={onCancel}
+                  onComplete={onComplete}
+                  onOpenChange={onOpenChange}
+                  questions={questions}
+                />
+              </PresencePage>
+            ) : (
+              <PresencePage
+                animate="center"
+                className="relative w-full"
+                custom={modeDirection}
+                data-slot="plan-composer-composer"
+                exit="exit"
+                initial="enter"
+                key="composer"
+                variants={modeVariants}
+              >
+                <ComposerInput
+                  onPromptChange={setPrompt}
+                  placeholder={promptPlaceholder}
+                  prompt={prompt}
+                />
+              </PresencePage>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+    </form>
   )
 }
 

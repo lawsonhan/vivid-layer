@@ -1,7 +1,7 @@
 <h1 align="center">Vivid Layer</h1>
 
 <p align="center">
-  Expressive React components and shader effects distributed through the shadcn Registry.
+  Source-available React components and WebGL shader effects distributed through the shadcn Registry.
 </p>
 
 <p align="center">
@@ -43,13 +43,20 @@ pnpm dlx shadcn@latest add @vivid-layer/single-day-weather-card
 
 The public Component catalog currently includes:
 
-- Install Command and Install Command Toolbar
-- Chat Minimap
+- Install Command
+- Install Command Toolbar
+- Crop Marks
+- Plan Composer
+- Voice Composer
 - Draft Email Card
+- Chat Minimap
 - Grid Loader
 - Streaming
+- Playful Streaming
 - Stay Card
-- Single-day and multi-day Weather Cards
+- Mosaic Stay Card
+- Single-day Weather
+- Multi-day Weather
 
 Browse the complete Component catalog and interactive previews at
 [vivid-layer.com/components](https://www.vivid-layer.com/components).

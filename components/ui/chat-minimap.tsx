@@ -19,9 +19,57 @@ type ChatMinimapItem = {
   description: string
 }
 
+type ChatMinimapSide = "left" | "right"
+
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)"
+
+const ChatMinimapSideContext =
+  React.createContext<ChatMinimapSide | null>(null)
+
+type ChatMinimapContainerProps = React.ComponentProps<"div"> & {
+  side?: ChatMinimapSide
+}
+
+function ChatMinimapContainer({
+  side = "left",
+  className,
+  ...props
+}: ChatMinimapContainerProps) {
+  return (
+    <ChatMinimapSideContext.Provider value={side}>
+      <div
+        data-slot="chat-minimap-container"
+        data-side={side}
+        className={cn(
+          "relative flex min-h-0",
+          "*:data-[slot=message-scroller]:min-w-0 *:data-[slot=message-scroller]:flex-1",
+          // The minimap floats over the transcript edge in a rail the content
+          // padding reserves, so the viewport's native scrollbar keeps its
+          // usual place at the right edge — outside the minimap, never
+          // between it and the messages.
+          "*:data-[slot=chat-minimap]:absolute *:data-[slot=chat-minimap]:top-1/2 *:data-[slot=chat-minimap]:z-10 *:data-[slot=chat-minimap]:-translate-y-1/2",
+          side === "right"
+            ? [
+                // right-5 clears the scrollbar; the rail's slack absorbs the
+                // difference between real and assumed scrollbar widths.
+                "*:data-[slot=chat-minimap]:right-5",
+                "**:data-[slot=message-scroller-content]:pe-20",
+              ]
+            : [
+                "*:data-[slot=chat-minimap]:left-3.5",
+                "**:data-[slot=message-scroller-content]:ps-20",
+              ],
+          className
+        )}
+        {...props}
+      />
+    </ChatMinimapSideContext.Provider>
+  )
+}
+
 type ChatMinimapProps = React.ComponentProps<"nav"> & {
   items: readonly ChatMinimapItem[]
-  side?: "left" | "right"
+  side?: ChatMinimapSide
   magnification?: number
   lensRange?: number
   itemSize?: number
@@ -33,7 +81,7 @@ type ChatMinimapProps = React.ComponentProps<"nav"> & {
 
 function ChatMinimap({
   items,
-  side = "left",
+  side: sideProp,
   magnification = 3,
   lensRange = 3,
   itemSize = 12,
@@ -45,6 +93,8 @@ function ChatMinimap({
   style,
   ...props
 }: ChatMinimapProps) {
+  const containerSide = React.useContext(ChatMinimapSideContext)
+  const side = sideProp ?? containerSide ?? "left"
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
   const { scrollToMessage } = useMessageScroller()
   const { currentAnchorId } = useMessageScrollerVisibility()
@@ -52,7 +102,9 @@ function ChatMinimap({
   function selectItem(id: string) {
     scrollToMessage(id, {
       align: "nearest",
-      behavior: "smooth",
+      behavior: window.matchMedia(REDUCED_MOTION_QUERY).matches
+        ? "instant"
+        : "smooth",
     })
   }
 
@@ -96,7 +148,7 @@ function ChatMinimap({
             >
               <span
                 data-current={isCurrent}
-                className="rounded-full bg-muted-foreground/40 transition-[width,background-color] group-hover:bg-muted-foreground group-focus-visible:bg-muted-foreground motion-reduce:transition-none data-[current=true]:bg-foreground"
+                className="rounded-full bg-muted-foreground/40 transition-[width,background-color] group-hover:bg-muted-foreground group-focus-visible:bg-muted-foreground data-[current=true]:bg-foreground"
                 style={{
                   width: getMarkerWidth(
                     index,
@@ -147,4 +199,11 @@ function getMarkerWidth(
   return minWidth + (maxWidth - minWidth) * factor
 }
 
-export { ChatMinimap, type ChatMinimapItem, type ChatMinimapProps }
+export {
+  ChatMinimap,
+  ChatMinimapContainer,
+  type ChatMinimapContainerProps,
+  type ChatMinimapItem,
+  type ChatMinimapProps,
+  type ChatMinimapSide,
+}

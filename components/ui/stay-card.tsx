@@ -154,11 +154,11 @@ function StayCard({
           <>
             <CarouselPrevious
               variant="secondary"
-              className="pointer-events-none left-2 bg-secondary/90 opacity-0 shadow-sm ring-1 ring-foreground/10 backdrop-blur-sm transition-opacity hover:bg-secondary group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:pointer-events-auto group-focus-within/carousel:opacity-100 motion-reduce:transition-none"
+              className="pointer-events-none left-2 bg-secondary/90 opacity-0 shadow-sm ring-1 ring-foreground/10 backdrop-blur-sm transition-opacity hover:bg-secondary group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:pointer-events-auto group-focus-within/carousel:opacity-100"
             />
             <CarouselNext
               variant="secondary"
-              className="pointer-events-none right-2 bg-secondary/90 opacity-0 shadow-sm ring-1 ring-foreground/10 backdrop-blur-sm transition-opacity hover:bg-secondary group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:pointer-events-auto group-focus-within/carousel:opacity-100 motion-reduce:transition-none"
+              className="pointer-events-none right-2 bg-secondary/90 opacity-0 shadow-sm ring-1 ring-foreground/10 backdrop-blur-sm transition-opacity hover:bg-secondary group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:pointer-events-auto group-focus-within/carousel:opacity-100"
             />
           </>
         )}

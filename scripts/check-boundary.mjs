@@ -130,6 +130,14 @@ for (const marker of [
   }
 }
 
+for (const item of registry.items.filter((item) => item.type === "registry:ui")) {
+  if (!readme.includes(`- ${item.title}\n`)) {
+    throw new Error(
+      `Public README component catalog is missing: ${item.title}`
+    )
+  }
+}
+
 const contributing = await readFile(
   path.join(repositoryRoot, "CONTRIBUTING.md"),
   "utf8"

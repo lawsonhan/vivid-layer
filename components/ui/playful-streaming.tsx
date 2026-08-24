@@ -57,6 +57,10 @@ export function PlayfulStreaming({
   return (
     <Streaming
       {...props}
+      // Remount on animation change: lingering glyph spans from the
+      // previous text would otherwise be retargeted by the new
+      // animation's CSS and replay it across the whole paragraph.
+      key={animation}
       animation={animation}
       animationDuration={
         animation === "magnetize"

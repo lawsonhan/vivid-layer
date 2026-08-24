@@ -83,6 +83,69 @@
       ]
     },
     {
+      "name": "crop-marks",
+      "type": "registry:ui",
+      "title": "Crop Marks",
+      "description": "The vivid layer crop marks: a crossing edge-line frame in double or single layers around a card or image.",
+      "categories": [
+        "foundations"
+      ],
+      "files": [
+        {
+          "path": "components/ui/crop-marks.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-image-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Image Demo",
+      "description": "Frames a photo with the default double crop marks.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-image-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-image-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-bento-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Bento Demo",
+      "description": "A bento grid of single-layer tiles whose shared gaps pair the lines up.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-bento-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-bento-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-messy-bento-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Messy Bento Demo",
+      "description": "A staggered collage of tiles whose overshooting marks cross and run off the stage.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-messy-bento-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-messy-bento-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "plan-composer",
       "type": "registry:ui",
       "title": "Plan Composer",
@@ -216,7 +279,8 @@
       "description": "A compact conversation navigator that previews turns, tracks reading position, and jumps between message anchors.",
       "dependencies": [
         "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1"
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.23.0"
       ],
       "registryDependencies": [
         "@shadcn/hover-card",
