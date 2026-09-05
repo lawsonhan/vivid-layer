@@ -21,7 +21,10 @@ type DraftEmailCardProps = Omit<
   value: DraftEmail
   onValueChange: (value: DraftEmail) => void
   onSend: (value: DraftEmail) => void
-  onDiscard: () => void
+  /** Renders the Discard action; omit it to offer only Send email. */
+  onDiscard?: () => void
+  /** Locks the fields and both actions, e.g. while a send is in flight. */
+  disabled?: boolean
 }
 
 const fieldClassName =
@@ -38,6 +41,7 @@ function DraftEmailCard({
   onValueChange,
   onSend,
   onDiscard,
+  disabled,
   className,
   ...props
 }: DraftEmailCardProps) {
@@ -55,6 +59,9 @@ function DraftEmailCard({
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    if (disabled) return
+
     onSend(value)
   }
 
@@ -63,17 +70,24 @@ function DraftEmailCard({
       aria-label="Draft email"
       {...props}
       data-slot="draft-email-card"
+      data-disabled={disabled || undefined}
       className={cn("min-w-0", className)}
       onSubmit={handleSubmit}
     >
-      <div className="overflow-hidden rounded-2xl bg-card text-card-foreground shadow-sm ring-1 ring-foreground/10">
+      <div
+        data-slot="draft-email-card-surface"
+        className="overflow-hidden rounded-2xl bg-card text-card-foreground shadow-sm ring-1 ring-foreground/10"
+      >
         <div
           className={fieldClassName}
           data-slot="draft-email-card-field"
           data-field="from"
         >
-          <span className={labelClassName}>From</span>
+          <span data-slot="draft-email-card-label" className={labelClassName}>
+            From
+          </span>
           <p
+            data-slot="draft-email-card-value"
             className="min-w-0 break-words text-base leading-6 text-muted-foreground"
             dir="auto"
           >
@@ -88,7 +102,11 @@ function DraftEmailCard({
           data-slot="draft-email-card-field"
           data-field="to"
         >
-          <label className={labelClassName} htmlFor={toId}>
+          <label
+            data-slot="draft-email-card-label"
+            className={labelClassName}
+            htmlFor={toId}
+          >
             To
           </label>
           <Textarea
@@ -98,6 +116,7 @@ function DraftEmailCard({
             autoComplete="email"
             className={textareaClassName}
             dir="auto"
+            disabled={disabled}
             inputMode="email"
             onChange={(event) =>
               updateDraft("to", event.currentTarget.value)
@@ -116,7 +135,11 @@ function DraftEmailCard({
           data-slot="draft-email-card-field"
           data-field="subject"
         >
-          <label className={labelClassName} htmlFor={subjectId}>
+          <label
+            data-slot="draft-email-card-label"
+            className={labelClassName}
+            htmlFor={subjectId}
+          >
             Subject
           </label>
           <Textarea
@@ -124,6 +147,7 @@ function DraftEmailCard({
             name="email.subject"
             className={textareaClassName}
             dir="auto"
+            disabled={disabled}
             onChange={(event) =>
               updateDraft("subject", event.currentTarget.value)
             }
@@ -140,7 +164,11 @@ function DraftEmailCard({
           data-slot="draft-email-card-field"
           data-field="body"
         >
-          <label className="sr-only" htmlFor={bodyId}>
+          <label
+            data-slot="draft-email-card-label"
+            className="sr-only"
+            htmlFor={bodyId}
+          >
             Body
           </label>
           <Textarea
@@ -148,6 +176,7 @@ function DraftEmailCard({
             name="email.body"
             className={cn(textareaClassName, "min-h-[13.5rem]")}
             dir="auto"
+            disabled={disabled}
             onChange={(event) =>
               updateDraft("body", event.currentTarget.value)
             }
@@ -162,18 +191,26 @@ function DraftEmailCard({
         data-slot="draft-email-card-actions"
         className="mt-4 flex flex-wrap items-center gap-2"
       >
-        <Button type="submit" size="lg" className="rounded-full px-4">
-          Send email
-        </Button>
         <Button
-          type="button"
-          variant="outline"
+          type="submit"
           size="lg"
           className="rounded-full px-4"
-          onClick={onDiscard}
+          disabled={disabled}
         >
-          Discard
+          Send email
         </Button>
+        {onDiscard ? (
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            className="rounded-full px-4"
+            disabled={disabled}
+            onClick={onDiscard}
+          >
+            Discard
+          </Button>
+        ) : null}
       </div>
     </form>
   )

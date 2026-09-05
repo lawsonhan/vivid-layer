@@ -79,9 +79,9 @@ function StayCard({
 
   return (
     <article
-      {...props}
-      data-component="stay-card"
+      data-slot="stay-card"
       className={cn("group relative min-w-0", className)}
+      {...props}
     >
       <Carousel
         aria-label={`${title} image gallery`}
@@ -97,6 +97,7 @@ function StayCard({
                 className="pl-0"
               >
                 <a
+                  data-slot="stay-card-image"
                   href={href}
                   aria-label={`View ${title}, image ${index + 1} of ${images.length}`}
                   className="block aspect-[12/11] bg-muted outline-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:ring-inset"
@@ -115,6 +116,7 @@ function StayCard({
                     />
                   ) : (
                     <div
+                      data-slot="stay-card-placeholder"
                       role="img"
                       aria-label={`No image available for ${title}`}
                       className="flex size-full flex-col items-center justify-center gap-2 text-muted-foreground"
@@ -137,6 +139,7 @@ function StayCard({
               className="pl-0"
             >
               <div
+                data-slot="stay-card-placeholder"
                 role="img"
                 aria-label={`No image available for ${title}`}
                 className="flex aspect-[12/11] flex-col items-center justify-center gap-2 bg-muted text-muted-foreground"
@@ -164,10 +167,13 @@ function StayCard({
         )}
       </Carousel>
 
-      <div className="mt-3 flex flex-col gap-3">
+      <div data-slot="stay-card-details" className="mt-3 flex flex-col gap-3">
         <div className="flex flex-col gap-1.5">
           {(beds !== undefined || squareFeet !== undefined) && (
-            <p className="flex items-center gap-3 text-sm text-muted-foreground">
+            <p
+              data-slot="stay-card-meta"
+              className="flex items-center gap-3 text-sm text-muted-foreground"
+            >
               {beds !== undefined && (
                 <span className="flex items-center gap-1.5">
                   <BedDoubleIcon
@@ -193,7 +199,10 @@ function StayCard({
             </p>
           )}
           <div className="flex flex-col gap-1">
-            <h3 className="text-base leading-snug font-medium">
+            <h3
+              data-slot="stay-card-title"
+              className="text-base leading-snug font-medium"
+            >
               <a
                 href={href}
                 className="line-clamp-1 rounded-sm outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -201,7 +210,10 @@ function StayCard({
                 {title}
               </a>
             </h3>
-            <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <p
+              data-slot="stay-card-location"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground"
+            >
               <MapPinIcon
                 className="size-3.5 shrink-0"
                 aria-hidden="true"
@@ -214,7 +226,7 @@ function StayCard({
         <Separator className="data-horizontal:w-14" />
 
         <div className="flex items-center justify-between gap-2">
-          <p className="flex min-w-0 items-baseline">
+          <p data-slot="stay-card-price" className="flex min-w-0 items-baseline">
             <span className="text-base font-medium">{price}</span>
             {priceSuffix && (
               <span className="ml-1 text-sm font-normal text-muted-foreground">
@@ -224,7 +236,10 @@ function StayCard({
           </p>
 
           {(rating !== undefined || reviewCount !== undefined) && (
-            <p className="relative flex shrink-0 items-center gap-1 text-sm leading-none">
+            <p
+              data-slot="stay-card-rating"
+              className="relative flex shrink-0 items-center gap-1 text-sm leading-none"
+            >
               <span className="sr-only">{ratingSummary}</span>
               {rating !== undefined && (
                 <>

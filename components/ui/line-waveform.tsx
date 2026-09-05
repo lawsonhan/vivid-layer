@@ -86,14 +86,21 @@ export const LineWaveform = ({
   const animationRef = useRef<number>(0)
   const lastUpdateRef = useRef<number>(0)
   const processingAnimationRef = useRef<number | null>(null)
+  const fadeAnimationRef = useRef<number | null>(null)
   const lastActiveDataRef = useRef<number[]>([])
   const transitionProgressRef = useRef(0)
   const staticBarsRef = useRef<number[]>([])
   const needsRedrawRef = useRef(true)
   const gradientCacheRef = useRef<CanvasGradient | null>(null)
   const lastWidthRef = useRef(0)
+  // Read through a ref so inline callbacks never restart the microphone.
+  const callbacksRef = useRef({ onError, onStreamReady, onStreamEnd })
 
   const heightStyle = typeof height === "number" ? `${height}px` : height
+
+  useEffect(() => {
+    callbacksRef.current = { onError, onStreamReady, onStreamEnd }
+  }, [onError, onStreamReady, onStreamEnd])
 
   // Handle canvas resizing
   useEffect(() => {
@@ -240,8 +247,9 @@ export const LineWaveform = ({
               )
             }
             needsRedrawRef.current = true
-            requestAnimationFrame(fadeToIdle)
+            fadeAnimationRef.current = requestAnimationFrame(fadeToIdle)
           } else {
+            fadeAnimationRef.current = null
             if (mode === "static") {
               staticBarsRef.current = []
             } else {
@@ -250,17 +258,24 @@ export const LineWaveform = ({
           }
         }
         fadeToIdle()
+
+        return () => {
+          if (fadeAnimationRef.current !== null) {
+            cancelAnimationFrame(fadeAnimationRef.current)
+            fadeAnimationRef.current = null
+          }
+        }
       }
     }
   }, [processing, active, barWidth, barGap, mode])
 
   // Handle microphone setup and teardown
   useEffect(() => {
-    if (!active) {
+    const releaseMicrophone = () => {
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop())
         streamRef.current = null
-        onStreamEnd?.()
+        callbacksRef.current.onStreamEnd?.()
       }
       if (
         audioContextRef.current &&
@@ -273,8 +288,17 @@ export const LineWaveform = ({
         cancelAnimationFrame(animationRef.current)
         animationRef.current = 0
       }
+    }
+
+    if (!active) {
+      releaseMicrophone()
       return
     }
+
+    // getUserMedia can resolve after this effect is cleaned up (unmount,
+    // `active` flipping back, StrictMode's double run). Stop such a late
+    // stream here instead of adopting it, or the microphone stays open.
+    let cancelled = false
 
     const setupMicrophone = async () => {
       try {
@@ -292,8 +316,14 @@ export const LineWaveform = ({
                 autoGainControl: true,
               },
         })
+        if (cancelled) {
+          stream.getTracks().forEach((track) => track.stop())
+          return
+        }
         streamRef.current = stream
-        onStreamReady?.(stream)
+        // Called before the AudioContext exists; a consumer may throw here
+        // to reject the stream and abort the rest of the setup.
+        callbacksRef.current.onStreamReady?.(stream)
 
         const AudioContextConstructor =
           window.AudioContext ||
@@ -313,39 +343,18 @@ export const LineWaveform = ({
         // Clear history when starting
         historyRef.current = []
       } catch (error) {
-        onError?.(error as Error)
+        if (cancelled) return
+        callbacksRef.current.onError?.(error as Error)
       }
     }
 
     setupMicrophone()
 
     return () => {
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((track) => track.stop())
-        streamRef.current = null
-        onStreamEnd?.()
-      }
-      if (
-        audioContextRef.current &&
-        audioContextRef.current.state !== "closed"
-      ) {
-        audioContextRef.current.close()
-        audioContextRef.current = null
-      }
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-        animationRef.current = 0
-      }
+      cancelled = true
+      releaseMicrophone()
     }
-  }, [
-    active,
-    deviceId,
-    fftSize,
-    smoothingTimeConstant,
-    onError,
-    onStreamReady,
-    onStreamEnd,
-  ])
+  }, [active, deviceId, fftSize, smoothingTimeConstant])
 
   // Animation loop
   useEffect(() => {
@@ -561,6 +570,7 @@ export const LineWaveform = ({
 
   return (
     <div
+      data-slot="line-waveform"
       className={cn("relative h-full w-full", className)}
       ref={containerRef}
       style={{ height: heightStyle }}

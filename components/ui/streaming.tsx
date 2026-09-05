@@ -5,7 +5,6 @@ import {
   useEffect,
   useRef,
   useState,
-  useSyncExternalStore,
   type ComponentProps,
 } from "react"
 import { cjk } from "@streamdown/cjk"
@@ -17,8 +16,6 @@ import {
 } from "streamdown"
 
 import { cn } from "@/lib/utils"
-
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)"
 
 const streamingPlugins = { cjk }
 
@@ -74,8 +71,16 @@ const streamingAnimationSettings = {
 const STREAMING_HORIZON_MS = 320
 const DRAIN_HORIZON_MS = 160
 const MAX_FRAME_MS = 100
-const MAGNETIZE_REVEAL_CADENCE_MS = 60
-const SCALE_SLAM_REVEAL_CADENCE_MS = 50
+
+// PlayfulStreaming variants that animate a paint-only copy of each glyph.
+// They need the extra glyph spans below, and the value is their reveal
+// cadence in ms per grapheme (0 keeps the adaptive pace). Both belong to
+// this renderer, which is why their names appear here.
+const glyphAnimations = new Map([
+  ["magnetize", 60],
+  ["spinIn", 0],
+  ["scaleSlam", 50],
+])
 
 const graphemeSegmenter =
   typeof Intl !== "undefined" && "Segmenter" in Intl
@@ -137,7 +142,6 @@ export function smoothReveal(
 function useSmoothText(
   target: string,
   isStreaming: boolean,
-  enabled: boolean,
   cadenceMs = 0,
 ) {
   const [displayed, setDisplayed] = useState(target)
@@ -145,7 +149,7 @@ function useSmoothText(
   const nextCadenceAtRef = useRef<number | null>(null)
 
   useEffect(() => {
-    if (!enabled || !target.startsWith(displayedRef.current)) {
+    if (!target.startsWith(displayedRef.current)) {
       nextCadenceAtRef.current = null
       displayedRef.current = target
       startTransition(() => setDisplayed(target))
@@ -229,11 +233,9 @@ function useSmoothText(
     frame = requestAnimationFrame(tick)
 
     return () => cancelAnimationFrame(frame)
-  }, [cadenceMs, enabled, isStreaming, target])
+  }, [cadenceMs, isStreaming, target])
 
-  return enabled && target.startsWith(displayed)
-    ? displayed
-    : target
+  return target.startsWith(displayed) ? displayed : target
 }
 
 // Streamdown drops the animation spans the moment isAnimating turns false,
@@ -271,30 +273,6 @@ export type StreamingProps = Omit<
   isStreaming?: boolean
 }
 
-function getReducedMotionPreference() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia(REDUCED_MOTION_QUERY).matches
-  )
-}
-
-function subscribeToReducedMotion(onStoreChange: () => void) {
-  if (typeof window === "undefined") return () => undefined
-
-  const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY)
-  mediaQuery.addEventListener("change", onStoreChange)
-
-  return () => mediaQuery.removeEventListener("change", onStoreChange)
-}
-
-function useReducedMotion() {
-  return useSyncExternalStore(
-    subscribeToReducedMotion,
-    getReducedMotionPreference,
-    () => false,
-  )
-}
-
 function resolveDirection(direction: ComponentProps<"div">["dir"]) {
   return direction === "ltr" || direction === "rtl"
     ? direction
@@ -311,24 +289,14 @@ export function Streaming({
   "aria-busy": ariaBusy,
   ...props
 }: StreamingProps) {
-  const shouldReduceMotion = useReducedMotion()
-  const text = useSmoothText(
-    children,
-    isStreaming,
-    !shouldReduceMotion,
-    animation === "magnetize"
-      ? MAGNETIZE_REVEAL_CADENCE_MS
-      : animation === "scaleSlam"
-        ? SCALE_SLAM_REVEAL_CADENCE_MS
-        : 0,
-  )
+  const glyphCadence = glyphAnimations.get(animation)
+  const text = useSmoothText(children, isStreaming, glyphCadence ?? 0)
   const isActive = isStreaming || text !== children
   const isLingering = useAnimationLinger(
     isActive,
     animationDuration,
   )
-  const shouldAnimate =
-    !shouldReduceMotion && (isActive || isLingering)
+  const shouldAnimate = isActive || isLingering
 
   return (
     <div
@@ -347,11 +315,7 @@ export function Streaming({
         }}
         className="min-w-0 break-words [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
         components={
-          animation === "magnetize" ||
-          animation === "spinIn" ||
-          animation === "scaleSlam"
-            ? animatedGlyphComponents
-            : undefined
+          glyphCadence === undefined ? undefined : animatedGlyphComponents
         }
         isAnimating={shouldAnimate}
         plugins={streamingPlugins}

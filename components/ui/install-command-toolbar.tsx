@@ -63,11 +63,12 @@ export function InstallCommandToolbar({
         value={value}
         defaultValue={defaultValue}
         onValueChange={onValueChange}
-        className="h-full w-auto max-w-none flex-1 rounded-none bg-transparent p-0 sm:w-auto"
+        className="h-full w-auto max-w-none flex-1 rounded-none bg-transparent p-0"
       />
       <CopyPromptMenu providers={providers} />
       {previewHref ? (
         <a
+          data-slot="install-command-toolbar-preview"
           href={previewHref}
           target="_blank"
           rel="noopener noreferrer"
@@ -134,6 +135,8 @@ function CopyPromptMenu({
             type="button"
             variant="outline"
             size="sm"
+            data-slot="install-command-toolbar-prompt"
+            data-copied={copiedProvider ? "" : undefined}
             aria-label={
               copiedOption
                 ? `Copied ${copiedOption.label} prompt`

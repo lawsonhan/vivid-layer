@@ -10,7 +10,6 @@ import {
 import {
   AnimatePresence,
   motion,
-  MotionConfig,
   type Variants,
 } from "motion/react"
 
@@ -51,13 +50,16 @@ export type VoiceComposerProps = Omit<
   onAudioRecorded?: (audio: Blob) => Promise<string>
   onTranscriptionChange?: (text: string) => void
   onError?: (error: VoiceComposerError) => void
+  /** Fires whenever the capture phase changes; mirrors `data-phase`. */
+  onPhaseChange?: (phase: VoiceComposerPhase) => void
   lang?: string
   disabled?: boolean
   maxDurationSeconds?: number
+  placeholder?: string
   waveformMode?: "static" | "scrolling"
 }
 
-type VoiceComposerPhase =
+export type VoiceComposerPhase =
   | "idle"
   | "requesting"
   | "recording"
@@ -278,9 +280,11 @@ function VoiceComposer({
   maxDurationSeconds = 120,
   onAudioRecorded,
   onError,
+  onPhaseChange,
   onSubmit,
   onTranscriptionChange,
   onValueChange,
+  placeholder = "Ask anything",
   value,
   waveformMode = "scrolling",
   ...props
@@ -315,13 +319,18 @@ function VoiceComposer({
   const maxDurationRef = React.useRef(maxDurationSeconds)
   const onAudioRecordedRef = React.useRef(onAudioRecorded)
   const onErrorRef = React.useRef(onError)
+  const onPhaseChangeRef = React.useRef(onPhaseChange)
   const onTranscriptionChangeRef = React.useRef(onTranscriptionChange)
   const onValueChangeRef = React.useRef(onValueChange)
 
   const setCurrentPhase = React.useCallback((next: VoiceComposerPhase) => {
+    const changed = phaseRef.current !== next
     phaseRef.current = next
     if (mountedRef.current) {
       setPhase(next)
+      if (changed) {
+        onPhaseChangeRef.current?.(next)
+      }
     }
   }, [])
 
@@ -369,6 +378,39 @@ function VoiceComposer({
     pendingFocusRef.current = selection
   }, [])
 
+  // Abandons the current capture: aborts recognition, stops the recorder
+  // and its stream, and resets the transcript refs. Callers bump the
+  // session first so late async results from this capture are ignored.
+  const teardownCapture = React.useCallback(() => {
+    clearRecordingTimeout()
+
+    const recognition = detachRecognition()
+    try {
+      recognition?.abort()
+    } catch {
+      // The recognition service may already be inactive.
+    }
+
+    const recorder = detachRecorder()
+    if (recorder && recorder.state !== "inactive") {
+      try {
+        recorder.stop()
+      } catch {
+        // The recorder may have stopped between the state check and stop().
+      }
+    }
+
+    stopAcceptedStream()
+
+    finalTranscriptRef.current = ""
+    recognitionStopRequestedRef.current = false
+  }, [
+    clearRecordingTimeout,
+    detachRecognition,
+    detachRecorder,
+    stopAcceptedStream,
+  ])
+
   const recoverWithError = React.useCallback(
     (error: VoiceComposerError, session = sessionRef.current) => {
       if (!mountedRef.current || session !== sessionRef.current) {
@@ -376,42 +418,14 @@ function VoiceComposer({
       }
 
       sessionRef.current += 1
-      clearRecordingTimeout()
-
-      const recognition = detachRecognition()
-      try {
-        recognition?.abort()
-      } catch {
-        // The recognition service may already be inactive.
-      }
-
-      const recorder = detachRecorder()
-      if (recorder && recorder.state !== "inactive") {
-        try {
-          recorder.stop()
-        } catch {
-          // The recorder may have stopped between the state check and stop().
-        }
-      }
-
-      stopAcceptedStream()
-
-      finalTranscriptRef.current = ""
-      recognitionStopRequestedRef.current = false
+      teardownCapture()
       setCaptureSession(null)
       restoreTextFocus(selectionRef.current)
       setCurrentPhase("idle")
       setAnnouncement(error.message)
       onErrorRef.current?.(error)
     },
-    [
-      clearRecordingTimeout,
-      detachRecognition,
-      detachRecorder,
-      restoreTextFocus,
-      setCurrentPhase,
-      stopAcceptedStream,
-    ],
+    [restoreTextFocus, setCurrentPhase, teardownCapture],
   )
 
   const commitTranscript = React.useCallback(
@@ -896,40 +910,12 @@ function VoiceComposer({
     }
 
     sessionRef.current += 1
-    clearRecordingTimeout()
-
-    const recognition = detachRecognition()
-    try {
-      recognition?.abort()
-    } catch {
-      // The recognition service may already be inactive.
-    }
-
-    const recorder = detachRecorder()
-    if (recorder && recorder.state !== "inactive") {
-      try {
-        recorder.stop()
-      } catch {
-        // The recorder may have stopped between the state check and stop().
-      }
-    }
-
-    stopAcceptedStream()
-
-    finalTranscriptRef.current = ""
-    recognitionStopRequestedRef.current = false
+    teardownCapture()
     setCaptureSession(null)
     restoreTextFocus(selectionRef.current)
     setCurrentPhase("idle")
     setAnnouncement("Voice recording canceled.")
-  }, [
-    clearRecordingTimeout,
-    detachRecognition,
-    detachRecorder,
-    restoreTextFocus,
-    setCurrentPhase,
-    stopAcceptedStream,
-  ])
+  }, [restoreTextFocus, setCurrentPhase, teardownCapture])
 
   const beginVoiceInput = React.useCallback(() => {
     if (disabled || phaseRef.current !== "idle") {
@@ -966,6 +952,7 @@ function VoiceComposer({
     maxDurationRef.current = maxDurationSeconds
     onAudioRecordedRef.current = onAudioRecorded
     onErrorRef.current = onError
+    onPhaseChangeRef.current = onPhaseChange
     onTranscriptionChangeRef.current = onTranscriptionChange
     onValueChangeRef.current = onValueChange
   }, [
@@ -973,6 +960,7 @@ function VoiceComposer({
     maxDurationSeconds,
     onAudioRecorded,
     onError,
+    onPhaseChange,
     onTranscriptionChange,
     onValueChange,
     value,
@@ -984,31 +972,9 @@ function VoiceComposer({
     return () => {
       mountedRef.current = false
       sessionRef.current += 1
-      clearRecordingTimeout()
-
-      const recognition = detachRecognition()
-      try {
-        recognition?.abort()
-      } catch {
-        // The recognition service may already be inactive.
-      }
-
-      const recorder = detachRecorder()
-      if (recorder && recorder.state !== "inactive") {
-        try {
-          recorder.stop()
-        } catch {
-          // The recorder may have stopped between the state check and stop().
-        }
-      }
-      stopAcceptedStream()
+      teardownCapture()
     }
-  }, [
-    clearRecordingTimeout,
-    detachRecognition,
-    detachRecorder,
-    stopAcceptedStream,
-  ])
+  }, [teardownCapture])
 
   React.useEffect(() => {
     if (phase !== "recording") {
@@ -1067,7 +1033,7 @@ function VoiceComposer({
     : null
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <form
         aria-busy={phase === "requesting" || phase === "transcribing"}
         className={cn("w-full", className)}
@@ -1118,7 +1084,7 @@ function VoiceComposer({
                   event.preventDefault()
                   event.currentTarget.form?.requestSubmit()
                 }}
-                placeholder="Ask anything"
+                placeholder={placeholder}
                 readOnly={isRequesting}
                 ref={textareaRef}
                 rows={2}
@@ -1173,6 +1139,7 @@ function VoiceComposer({
                   </InputGroupText>
                 ) : (
                   <InputGroupButton
+                    data-slot="voice-composer-cancel"
                     onClick={cancelRecording}
                     size="sm"
                     type="button"
@@ -1184,6 +1151,7 @@ function VoiceComposer({
                 )
               ) : (
                 <InputGroupButton
+                  data-slot="voice-composer-voice-trigger"
                   aria-busy={isRequesting || undefined}
                   aria-disabled={isRequesting || undefined}
                   aria-label="Use voice input"
@@ -1206,6 +1174,7 @@ function VoiceComposer({
               {isVoicePage ? (
                 phase === "recording" ? (
                   <InputGroupButton
+                    data-slot="voice-composer-stop"
                     aria-label="Stop recording"
                     onClick={stopRecording}
                     ref={stopButtonRef}
@@ -1219,6 +1188,7 @@ function VoiceComposer({
                 ) : null
               ) : (
                 <InputGroupButton
+                  data-slot="voice-composer-send"
                   aria-disabled={isRequesting || undefined}
                   aria-label="Send message"
                   disabled={disabled || !value.trim()}
@@ -1236,7 +1206,7 @@ function VoiceComposer({
       <span aria-atomic="true" className="sr-only" role="status">
         {announcement}
       </span>
-    </MotionConfig>
+    </>
   )
 }
 

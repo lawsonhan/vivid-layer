@@ -56,14 +56,19 @@ function SingleDayWeatherCard({
 
   return (
     <Card
-      {...props}
+      data-slot="single-day-weather-card"
       className={cn("rounded-[20px] py-8", className)}
       style={cardStyle}
+      {...props}
     >
       <CardHeader className="items-center gap-4 text-center">
-        <div className="flex items-center justify-self-center gap-4">
+        <div
+          data-slot="single-day-weather-card-summary"
+          className="flex items-center justify-self-center gap-4"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            data-slot="single-day-weather-card-icon"
             key={resolvedConditionIconSrc}
             src={resolvedConditionIconSrc}
             alt=""
@@ -71,7 +76,12 @@ function SingleDayWeatherCard({
             height={80}
             className="size-16 object-contain"
           />
-          <span className="text-4xl font-normal">{temperature}</span>
+          <span
+            data-slot="single-day-weather-card-temperature"
+            className="text-4xl font-normal"
+          >
+            {temperature}
+          </span>
         </div>
         <div className="flex flex-col items-center gap-2">
           <CardTitle>{location}</CardTitle>

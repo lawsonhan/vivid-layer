@@ -56,14 +56,15 @@ function MosaicStayCard({
 
   return (
     <Card
-      {...props}
-      data-component="mosaic-stay-card"
+      data-slot="mosaic-stay-card"
       className={cn(
         "gap-0 rounded-3xl py-0 [--card-spacing:--spacing(4)]",
         className
       )}
+      {...props}
     >
       <div
+        data-slot="mosaic-stay-card-gallery"
         role="group"
         aria-label={`${title} image gallery`}
         className="grid min-h-0 aspect-[5/4] grid-cols-[2fr_1fr] grid-rows-2 gap-1 overflow-hidden p-2 pb-0"
@@ -73,6 +74,7 @@ function MosaicStayCard({
 
           return (
             <div
+              data-slot="mosaic-stay-card-tile"
               key={image ? `${image.src}-${index}` : index}
               className={cn(
                 "min-h-0 overflow-hidden bg-muted",
@@ -81,6 +83,7 @@ function MosaicStayCard({
             >
               {image ? (
                 <a
+                  data-slot="mosaic-stay-card-image"
                   href={href}
                   aria-label={`View ${title}, image ${index + 1} of ${Math.min(images.length, 3)}`}
                   className="block size-full outline-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:ring-inset"
@@ -112,7 +115,10 @@ function MosaicStayCard({
       <CardContent className="mt-3 flex flex-col gap-1 pb-(--card-spacing)">
         <div className="flex flex-col gap-0.5">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="min-w-0 text-base leading-snug font-medium">
+            <h3
+              data-slot="mosaic-stay-card-title"
+              className="min-w-0 text-base leading-snug font-medium"
+            >
               <a
                 href={href}
                 className="line-clamp-1 rounded-sm outline-none hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -121,7 +127,10 @@ function MosaicStayCard({
               </a>
             </h3>
             {rating !== undefined && (
-              <p className="flex shrink-0 items-center gap-1 text-sm leading-none">
+              <p
+                data-slot="mosaic-stay-card-rating"
+                className="flex shrink-0 items-center gap-1 text-sm leading-none"
+              >
                 <span className="sr-only">
                   {rating} out of 5 stars
                 </span>
@@ -135,14 +144,20 @@ function MosaicStayCard({
               </p>
             )}
           </div>
-          <p className="truncate text-xs leading-4 text-muted-foreground">
+          <p
+            data-slot="mosaic-stay-card-address"
+            className="truncate text-xs leading-4 text-muted-foreground"
+          >
             {address}
           </p>
         </div>
 
         <Separator className="data-horizontal:w-14" />
 
-        <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
+        <p
+          data-slot="mosaic-stay-card-description"
+          className="line-clamp-2 text-sm leading-6 text-muted-foreground"
+        >
           {description}
         </p>
       </CardContent>
@@ -153,6 +168,7 @@ function MosaicStayCard({
 function ImagePlaceholder({ title }: { title: string }) {
   return (
     <div
+      data-slot="mosaic-stay-card-placeholder"
       role="img"
       aria-label={`No image available for ${title}`}
       className="flex size-full flex-col items-center justify-center gap-2 text-muted-foreground"

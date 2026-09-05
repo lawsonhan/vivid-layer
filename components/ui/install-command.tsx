@@ -87,16 +87,24 @@ export function InstallCommand({
       {...props}
     >
       <div
+        data-slot="install-command-frame"
         className="flex h-full min-w-0 items-stretch overflow-hidden rounded-[8px] border-[0.5px] border-foreground/15 bg-background shadow-[0_0.5px_1px_rgb(0_0_0/0.06),0_2.5px_8px_rgb(0_0_0/0.05)]"
       >
-        <div className="flex min-w-0 flex-1 items-center gap-1.5 py-0 pr-1 pl-2">
+        <div
+          data-slot="install-command-body"
+          className="flex min-w-0 flex-1 items-center gap-1.5 py-0 pr-1 pl-2"
+        >
           <span
+            data-slot="install-command-icon"
             className="grid size-3.5 flex-none place-items-center"
             aria-hidden="true"
           >
             <activeOption.icon className="size-full" />
           </span>
-          <span className="min-w-0 flex-1 truncate font-mono text-xs leading-none tracking-[-0.02em]">
+          <span
+            data-slot="install-command-text"
+            className="min-w-0 flex-1 truncate font-mono text-xs leading-none tracking-[-0.02em]"
+          >
             {command}
           </span>
           <CopyCommandButton
@@ -111,7 +119,7 @@ export function InstallCommand({
         >
           <SelectTrigger
             aria-label="Choose package manager"
-            className="h-full w-7 flex-none justify-center gap-0 rounded-none border-0 border-l-[0.5px] border-foreground/15 bg-transparent px-0 py-0 hover:bg-muted data-[size=default]:h-full data-popup-open:[&>svg]:rotate-180 [&>svg]:size-3 [&>svg]:text-foreground/80 [&>svg]:transition-transform"
+            className="h-full w-7 flex-none justify-center gap-0 rounded-none border-0 border-l-[0.5px] border-foreground/15 bg-transparent px-0 py-0 hover:bg-muted focus-visible:ring-inset data-[size=default]:h-full data-popup-open:[&>svg]:rotate-180 [&>svg]:size-3 [&>svg]:text-foreground/80 [&>svg]:transition-transform"
           >
             <SelectValue className="sr-only" />
           </SelectTrigger>
@@ -192,6 +200,8 @@ function CopyCommandButton({
       type="button"
       variant="ghost"
       size="icon-xs"
+      data-slot="install-command-copy"
+      data-copied={isCopied || undefined}
       aria-label={label}
       title={command}
       className="flex-none rounded-md"

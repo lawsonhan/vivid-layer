@@ -44,15 +44,26 @@ type PlanComposerAnswer =
 
 type PlanComposerAnswers = Record<string, PlanComposerAnswer>
 
-type PlanComposerProps = Omit<React.ComponentProps<"form">, "onSubmit"> & {
+type PlanComposerProps = Omit<
+  React.ComponentProps<"form">,
+  "defaultValue" | "onSubmit"
+> & {
+  /** Uncontrolled initial message text. */
+  defaultValue?: string
+  /** Disables every control in both modes; submissions are ignored. */
+  disabled?: boolean
   notePlaceholder?: string
   onCancel?: () => void
   onComplete?: (answers: PlanComposerAnswers) => void
   onOpenChange?: (open: boolean) => void
   onSubmit?: (message: string) => void
+  /** Fires with every edit, and with "" after a message is submitted. */
+  onValueChange?: (value: string) => void
   open: boolean
   promptPlaceholder?: string
   questions: PlanComposerQuestion[]
+  /** Controlled message text. */
+  value?: string
 }
 
 /* -------------------------------------------------------------------------- */
@@ -234,6 +245,7 @@ function PlanComposerBadge({
 }: React.ComponentProps<"span">) {
   return (
     <span
+      data-slot="plan-composer-badge"
       className={cn(
         "flex size-7 shrink-0 items-center justify-center rounded-full border border-border bg-muted/50 text-muted-foreground shadow-xs",
         className,
@@ -250,20 +262,30 @@ type PlanComposerHeaderProps = {
 
 function PlanComposerHeader({ children, title }: PlanComposerHeaderProps) {
   return (
-    <div className="flex min-w-0 items-center justify-between gap-4">
-      <p className="truncate text-base leading-5 font-medium">{title}</p>
+    <div
+      data-slot="plan-composer-header"
+      className="flex min-w-0 items-center justify-between gap-4"
+    >
+      <p
+        data-slot="plan-composer-title"
+        className="truncate text-base leading-5 font-medium"
+      >
+        {title}
+      </p>
       {children}
     </div>
   )
 }
 
 type ComposerInputProps = {
+  disabled?: boolean
   onPromptChange: (value: string) => void
   placeholder: string
   prompt: string
 }
 
 function ComposerInput({
+  disabled,
   onPromptChange,
   placeholder,
   prompt,
@@ -278,6 +300,7 @@ function ComposerInput({
       <InputGroupInput
         aria-label="Message"
         className="h-full pl-6"
+        disabled={disabled}
         name="message"
         onChange={(event) => onPromptChange(event.target.value)}
         onCompositionEnd={() => {
@@ -308,7 +331,7 @@ function ComposerInput({
         <InputGroupButton
           aria-label="Send message"
           className="rounded-full"
-          disabled={!prompt.trim()}
+          disabled={disabled || !prompt.trim()}
           size="icon-sm"
           type="submit"
           variant="default"
@@ -321,6 +344,7 @@ function ComposerInput({
 }
 
 type PlanNoteFieldProps = {
+  disabled?: boolean
   note: string
   onNoteChange: (value: string) => void
   onSubmit: () => void
@@ -328,6 +352,7 @@ type PlanNoteFieldProps = {
 }
 
 function PlanNoteField({
+  disabled,
   note,
   onNoteChange,
   onSubmit,
@@ -343,6 +368,7 @@ function PlanNoteField({
       <InputGroupInput
         aria-label="Answer current question"
         className="h-full"
+        disabled={disabled}
         name="note"
         onChange={(event) => onNoteChange(event.target.value)}
         onCompositionEnd={() => {
@@ -378,7 +404,7 @@ function PlanNoteField({
         <InputGroupButton
           aria-label="Submit note"
           className="rounded-full"
-          disabled={!note.trim()}
+          disabled={disabled || !note.trim()}
           onClick={onSubmit}
           size="icon-sm"
           type="button"
@@ -392,6 +418,7 @@ function PlanNoteField({
 }
 
 type PlanQuestionPageProps = {
+  disabled?: boolean
   index: number
   note: string
   notePlaceholder: string
@@ -405,6 +432,7 @@ type PlanQuestionPageProps = {
 }
 
 function PlanQuestionPage({
+  disabled,
   index,
   note,
   notePlaceholder,
@@ -424,7 +452,7 @@ function PlanQuestionPage({
       <Button
         aria-label={delta === -1 ? "Previous question" : "Next question"}
         className="size-6 rounded-full disabled:opacity-30"
-        disabled={target < 0 || target >= total}
+        disabled={disabled || target < 0 || target >= total}
         onClick={() => onNavigate(target)}
         size="icon-xs"
         type="button"
@@ -461,11 +489,13 @@ function PlanQuestionPage({
         >
           {question.options.map((option, optionIndex) => (
             <button
+              data-slot="plan-composer-option"
               aria-current={
                 selectedValue === option.value ? "true" : undefined
               }
-              className="flex h-10 w-full min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-full px-2 py-1.5 text-left text-sm transition-colors outline-none hover:bg-muted/60 focus-visible:ring-2 focus-visible:ring-ring/50 data-[selected=true]:bg-muted"
+              className="flex h-10 w-full min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-full px-2 py-1.5 text-left text-sm transition-colors outline-none hover:bg-muted/60 focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[selected=true]:bg-muted"
               data-selected={selectedValue === option.value}
+              disabled={disabled}
               key={option.value}
               onClick={() => onSelect(option.value)}
               type="button"
@@ -483,6 +513,7 @@ function PlanQuestionPage({
       </div>
 
       <PlanNoteField
+        disabled={disabled}
         note={note}
         onNoteChange={onNoteChange}
         onSubmit={onSubmitNote}
@@ -508,6 +539,7 @@ function answerLabel(
 
 type PlanReceiptPageProps = {
   answers: PlanComposerAnswers
+  disabled?: boolean
   onCancel: () => void
   onEdit: () => void
   onSubmit: () => void
@@ -516,6 +548,7 @@ type PlanReceiptPageProps = {
 
 function PlanReceiptPage({
   answers,
+  disabled,
   onCancel,
   onEdit,
   onSubmit,
@@ -531,6 +564,7 @@ function PlanReceiptPage({
         <PlanComposerHeader title="Plan ready">
           <Button
             className="h-6 rounded-full px-1.5 text-xs text-muted-foreground"
+            disabled={disabled}
             onClick={onEdit}
             size="xs"
             type="button"
@@ -559,12 +593,14 @@ function PlanReceiptPage({
       </div>
 
       <div
+        data-slot="plan-composer-actions"
         aria-label="Plan actions"
         className="flex h-[52px] items-center justify-end gap-2 px-4"
         role="group"
       >
         <Button
           className="h-9 rounded-full px-4"
+          disabled={disabled}
           onClick={onCancel}
           size="lg"
           type="button"
@@ -574,6 +610,7 @@ function PlanReceiptPage({
         </Button>
         <Button
           className="h-9 rounded-full px-4"
+          disabled={disabled}
           onClick={onSubmit}
           size="lg"
           type="button"
@@ -590,6 +627,7 @@ function PlanReceiptPage({
 /* -------------------------------------------------------------------------- */
 
 type PlanFlowProps = {
+  disabled?: boolean
   notePlaceholder: string
   onCancel?: () => void
   onComplete?: (answers: PlanComposerAnswers) => void
@@ -598,6 +636,7 @@ type PlanFlowProps = {
 }
 
 function PlanFlow({
+  disabled,
   notePlaceholder,
   onCancel,
   onComplete,
@@ -638,6 +677,7 @@ function PlanFlow({
           {isReceipt ? (
             <PlanReceiptPage
               answers={session.answers}
+              disabled={disabled}
               onCancel={() => {
                 onCancel?.()
                 onOpenChange?.(false)
@@ -651,6 +691,7 @@ function PlanFlow({
             />
           ) : (
             <PlanQuestionPage
+              disabled={disabled}
               index={session.index}
               note={session.drafts[question.id] ?? ""}
               notePlaceholder={notePlaceholder}
@@ -675,17 +716,24 @@ function PlanFlow({
 
 function PlanComposer({
   className,
+  defaultValue,
+  disabled,
   notePlaceholder = "Answer in your own words",
   onCancel,
   onComplete,
   onOpenChange,
   onSubmit,
+  onValueChange,
   open,
   promptPlaceholder = "Ask anything",
   questions,
+  value,
   ...props
 }: PlanComposerProps) {
-  const [prompt, setPrompt] = React.useState("")
+  const [internalPrompt, setInternalPrompt] = React.useState(
+    defaultValue ?? "",
+  )
+  const prompt = value ?? internalPrompt
   const [surfaceHeight, setSurfaceHeight] = React.useState<number | "auto">(
     "auto",
   )
@@ -704,10 +752,18 @@ function PlanComposer({
     })
   }, [])
 
+  function setPrompt(next: string) {
+    if (value === undefined) {
+      setInternalPrompt(next)
+    }
+
+    onValueChange?.(next)
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    if (showPlan) {
+    if (showPlan || disabled) {
       return
     }
 
@@ -727,11 +783,13 @@ function PlanComposer({
         "relative h-[52px] w-[min(720px,calc(100vw-32px))]",
         className,
       )}
+      data-disabled={disabled || undefined}
       data-slot="plan-composer"
       onSubmit={handleSubmit}
       {...props}
     >
       <motion.div
+        data-slot="plan-composer-surface"
         animate={{ height: surfaceHeight }}
         className="absolute inset-x-0 bottom-0 overflow-hidden rounded-3xl border border-input bg-popover shadow-xl shadow-black/8 transition-[border-color,box-shadow] has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50"
         initial={false}
@@ -755,6 +813,7 @@ function PlanComposer({
                 variants={modeVariants}
               >
                 <PlanFlow
+                  disabled={disabled}
                   notePlaceholder={notePlaceholder}
                   onCancel={onCancel}
                   onComplete={onComplete}
@@ -774,6 +833,7 @@ function PlanComposer({
                 variants={modeVariants}
               >
                 <ComposerInput
+                  disabled={disabled}
                   onPromptChange={setPrompt}
                   placeholder={promptPlaceholder}
                   prompt={prompt}

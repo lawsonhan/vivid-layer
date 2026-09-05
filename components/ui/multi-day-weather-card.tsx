@@ -79,24 +79,29 @@ function MultiDayWeatherCard({
 
   return (
     <Card
-      {...props}
+      data-slot="multi-day-weather-card"
       data-weather-size={size}
       className={cn(
         "group/multi-day-weather-card gap-3 rounded-[20px] py-8",
         className
       )}
       style={cardStyle}
+      {...props}
     >
       <CardHeader className="items-center justify-items-center gap-3 px-8 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          data-slot="multi-day-weather-card-icon"
           src={conditionIconSrc ?? getWeatherConditionIconSrc(condition)}
           alt=""
           width={64}
           height={64}
           className="size-14 object-contain group-data-[weather-size=lg]/multi-day-weather-card:size-16"
         />
-        <div className="flex items-baseline justify-center gap-2">
+        <div
+          data-slot="multi-day-weather-card-range"
+          className="flex items-baseline justify-center gap-2"
+        >
           <span className="text-2xl font-normal text-muted-foreground group-data-[weather-size=lg]/multi-day-weather-card:text-[2rem] group-data-[weather-size=lg]/multi-day-weather-card:leading-10">
             {lowTemperature}
           </span>
@@ -114,6 +119,7 @@ function MultiDayWeatherCard({
       <CardContent className="flex flex-wrap justify-center gap-4 px-8 group-data-[weather-size=lg]/multi-day-weather-card:gap-8">
         {days.map((item, index) => (
           <div
+            data-slot="multi-day-weather-card-day"
             key={`${item.condition}-${item.temperature}-${index}`}
             className="flex flex-col items-center gap-1"
           >

@@ -21,8 +21,6 @@ type ChatMinimapItem = {
 
 type ChatMinimapSide = "left" | "right"
 
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)"
-
 const ChatMinimapSideContext =
   React.createContext<ChatMinimapSide | null>(null)
 
@@ -69,7 +67,13 @@ function ChatMinimapContainer({
 
 type ChatMinimapProps = React.ComponentProps<"nav"> & {
   items: readonly ChatMinimapItem[]
+  /** Used outside a ChatMinimapContainer; inside one, the container's side wins. */
   side?: ChatMinimapSide
+  /** Runs before a marker jumps; call event.preventDefault() to take over. */
+  onItemSelect?: (
+    item: ChatMinimapItem,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => void
   magnification?: number
   lensRange?: number
   itemSize?: number
@@ -82,6 +86,7 @@ type ChatMinimapProps = React.ComponentProps<"nav"> & {
 function ChatMinimap({
   items,
   side: sideProp,
+  onItemSelect,
   magnification = 3,
   lensRange = 3,
   itemSize = 12,
@@ -94,18 +99,22 @@ function ChatMinimap({
   ...props
 }: ChatMinimapProps) {
   const containerSide = React.useContext(ChatMinimapSideContext)
-  const side = sideProp ?? containerSide ?? "left"
+  // The container positions the rail, so its side must win or the markers
+  // and previews would flip while the rail stays put.
+  const side = containerSide ?? sideProp ?? "left"
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
   const { scrollToMessage } = useMessageScroller()
   const { currentAnchorId } = useMessageScrollerVisibility()
 
-  function selectItem(id: string) {
-    scrollToMessage(id, {
-      align: "nearest",
-      behavior: window.matchMedia(REDUCED_MOTION_QUERY).matches
-        ? "instant"
-        : "smooth",
-    })
+  function selectItem(
+    item: ChatMinimapItem,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) {
+    onItemSelect?.(item, event)
+
+    if (event.defaultPrevented) return
+
+    scrollToMessage(item.id, { align: "nearest", behavior: "smooth" })
   }
 
   return (
@@ -128,10 +137,12 @@ function ChatMinimap({
               render={
                 <button
                   type="button"
+                  data-slot="chat-minimap-item"
+                  data-current={isCurrent || undefined}
                   aria-label={`Jump to: ${item.title}`}
                   aria-current={isCurrent ? "location" : undefined}
                   className={cn(
-                    "group flex items-center rounded-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+                    "group/chat-minimap-item flex items-center rounded-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
                     side === "right" && "justify-end"
                   )}
                   style={{
@@ -142,13 +153,14 @@ function ChatMinimap({
                   onMouseLeave={() => setHoveredIndex(null)}
                   onFocus={() => setHoveredIndex(index)}
                   onBlur={() => setHoveredIndex(null)}
-                  onClick={() => selectItem(item.id)}
+                  onClick={(event) => selectItem(item, event)}
                 />
               }
             >
               <span
+                data-slot="chat-minimap-marker"
                 data-current={isCurrent}
-                className="rounded-full bg-muted-foreground/40 transition-[width,background-color] group-hover:bg-muted-foreground group-focus-visible:bg-muted-foreground data-[current=true]:bg-foreground"
+                className="rounded-full bg-muted-foreground/40 transition-[width,background-color] group-hover/chat-minimap-item:bg-muted-foreground group-focus-visible/chat-minimap-item:bg-muted-foreground data-[current=true]:bg-foreground"
                 style={{
                   width: getMarkerWidth(
                     index,
@@ -164,6 +176,7 @@ function ChatMinimap({
               />
             </HoverCardTrigger>
             <HoverCardContent
+              data-slot="chat-minimap-preview"
               side={side === "right" ? "left" : "right"}
               sideOffset={8}
               className="flex w-72 flex-col gap-1"

@@ -16,7 +16,6 @@ const GRID_CENTER = (GRID_SIDE - 1) / 2
 const CURVE_SAMPLE_COUNT = 256
 const TAU = Math.PI * 2
 const BASE_OPACITY = 0.08
-const STATIC_PEAK_OPACITY = 0.3
 const HEAD_WIDTH_STEPS = 0.45
 const TRAIL_DECAY = 0.46
 const OPACITY_EPSILON = 1 / 255
@@ -34,7 +33,6 @@ type CompiledGridMotionRecipe = Readonly<{
   tailLength: number
   trajectories: readonly Uint8Array[]
   initialFrame: Float32Array
-  staticFrame: Float32Array
 }>
 
 export type GridLoaderVariant =
@@ -333,39 +331,6 @@ function compileTrajectory(trajectory: TrajectorySampler) {
   return Uint8Array.from(visits)
 }
 
-function createStaticFrame(trajectories: readonly Uint8Array[]) {
-  const coverage = new Uint16Array(CELL_COUNT)
-  const frame = new Float32Array(CELL_COUNT)
-  let maximumCoverage = 0
-
-  for (
-    let trajectoryIndex = 0;
-    trajectoryIndex < trajectories.length;
-    trajectoryIndex += 1
-  ) {
-    const visits = trajectories[trajectoryIndex]
-
-    for (let visitIndex = 0; visitIndex < visits.length; visitIndex += 1) {
-      const cell = visits[visitIndex]
-
-      coverage[cell] += 1
-      maximumCoverage = Math.max(maximumCoverage, coverage[cell])
-    }
-  }
-
-  for (let index = 0; index < CELL_COUNT; index += 1) {
-    const strength =
-      maximumCoverage === 0
-        ? 0
-        : Math.sqrt(coverage[index] / maximumCoverage)
-
-    frame[index] =
-      BASE_OPACITY + (STATIC_PEAK_OPACITY - BASE_OPACITY) * strength
-  }
-
-  return frame
-}
-
 function sampleMotionFrame(
   recipe: Pick<
     CompiledGridMotionRecipe,
@@ -426,7 +391,6 @@ function compileRecipe(recipe: GridTrajectoryRecipe) {
     tailLength: recipe.tailLength,
     trajectories,
     initialFrame: new Float32Array(CELL_COUNT),
-    staticFrame: createStaticFrame(trajectories),
   }
 
   sampleMotionFrame(compiled, 0, compiled.initialFrame)
@@ -485,13 +449,11 @@ export function GridLoader({
   )
   const phaseRef = useRef(0)
   const previousTimeRef = useRef<number | null>(null)
-  const frame = useMemo(() => new Float32Array(CELL_COUNT), [])
-  const previousOpacity = useMemo(() => {
-    const values = new Float32Array(CELL_COUNT)
-
-    values.fill(Number.NaN)
-    return values
-  }, [])
+  // Mutable scratch buffers: written every frame, never read during render.
+  const frameRef = useRef(new Float32Array(CELL_COUNT))
+  const previousOpacityRef = useRef(
+    new Float32Array(CELL_COUNT).fill(Number.NaN)
+  )
   const dotRefSetters = useMemo(
     () =>
       GRID_CELLS.map<RefCallback<HTMLSpanElement>>(
@@ -503,15 +465,11 @@ export function GridLoader({
   )
 
   useLayoutEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-    let unsubscribe: (() => void) | null = null
+    const frame = frameRef.current
+    const previousOpacity = previousOpacityRef.current
 
-    const draw = (reducedMotion: boolean) => {
-      const nextFrame = reducedMotion ? recipe.staticFrame : frame
-
-      if (!reducedMotion) {
-        sampleMotionFrame(recipe, phaseRef.current, nextFrame)
-      }
+    const draw = () => {
+      sampleMotionFrame(recipe, phaseRef.current, frame)
 
       for (let index = 0; index < CELL_COUNT; index += 1) {
         const dot = dotRefs.current[index]
@@ -521,7 +479,7 @@ export function GridLoader({
           continue
         }
 
-        const nextOpacity = nextFrame[index]
+        const nextOpacity = frame[index]
 
         if (
           Math.abs(nextOpacity - previousOpacity[index]) <= OPACITY_EPSILON
@@ -534,54 +492,32 @@ export function GridLoader({
       }
     }
 
-    const stop = () => {
-      unsubscribe?.()
-      unsubscribe = null
-      previousTimeRef.current = null
-    }
+    // React re-applies each dot's initial opacity when the recipe changes,
+    // so forget the last animated values before the first draw.
+    previousOpacity.fill(Number.NaN)
+    draw()
 
-    const start = () => {
-      if (unsubscribe) return
+    const unsubscribe = subscribeFrame((now) => {
+      const previousTime = previousTimeRef.current
 
-      unsubscribe = subscribeFrame((now) => {
-        const previousTime = previousTimeRef.current
-
-        previousTimeRef.current = now
-        if (previousTime !== null) {
-          phaseRef.current = wrapPhase(
-            phaseRef.current + (now - previousTime) / resolvedDuration
-          )
-        }
-
-        draw(false)
-      })
-    }
-
-    const syncMotionPreference = () => {
-      stop()
-      previousOpacity.fill(Number.NaN)
-
-      if (media.matches) {
-        draw(true)
-        return
+      previousTimeRef.current = now
+      if (previousTime !== null) {
+        phaseRef.current = wrapPhase(
+          phaseRef.current + (now - previousTime) / resolvedDuration
+        )
       }
 
-      draw(false)
-      start()
-    }
-
-    syncMotionPreference()
-    media.addEventListener("change", syncMotionPreference)
+      draw()
+    })
 
     return () => {
-      media.removeEventListener("change", syncMotionPreference)
-      stop()
+      unsubscribe()
+      previousTimeRef.current = null
     }
-  }, [frame, previousOpacity, recipe, resolvedDuration])
+  }, [recipe, resolvedDuration])
 
   return (
     <span
-      {...props}
       aria-hidden={label ? undefined : true}
       aria-label={label}
       role={label ? "status" : undefined}
@@ -592,8 +528,10 @@ export function GridLoader({
       data-slot="grid-loader"
       data-variant={variant}
       style={{ height: resolvedSize, width: resolvedSize, ...style }}
+      {...props}
     >
       <span
+        data-slot="grid-loader-grid"
         className="grid"
         style={{
           gap,
@@ -603,7 +541,8 @@ export function GridLoader({
       >
         {GRID_CELLS.map((cell, index) => (
           <span
-            className="block rounded-full bg-current will-change-[opacity] motion-reduce:will-change-auto"
+            data-slot="grid-loader-dot"
+            className="block rounded-full bg-current will-change-[opacity]"
             key={cell}
             ref={dotRefSetters[index]}
             style={{

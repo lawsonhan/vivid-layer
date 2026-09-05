@@ -9,8 +9,6 @@
       "title": "Install Command",
       "description": "Displays a compact install command with package manager switching and copy feedback.",
       "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1",
         "lucide-react@^1.23.0"
       ],
       "registryDependencies": [
@@ -86,7 +84,7 @@
       "name": "crop-marks",
       "type": "registry:ui",
       "title": "Crop Marks",
-      "description": "The vivid layer crop marks: a crossing edge-line frame in double or single layers around a card or image.",
+      "description": "The vivid layer crop marks: a crossing edge-line frame in double or single layers around a card or image, and a bento grid that draws the marks from its layout.",
       "categories": [
         "foundations"
       ],
@@ -100,10 +98,15 @@
     {
       "name": "crop-marks-image-demo",
       "type": "registry:component",
-      "title": "Crop Marks Image Demo",
-      "description": "Frames a photo with the default double crop marks.",
+      "title": "Crop Marks Authentication Demo",
+      "description": "Frames a compact authentication form with the default double crop marks.",
+      "dependencies": [
+        "lucide-react@^1.23.0"
+      ],
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "@shadcn/button",
+        "@shadcn/input-group"
       ],
       "files": [
         {
@@ -114,25 +117,73 @@
       ]
     },
     {
-      "name": "crop-marks-bento-demo",
+      "name": "crop-marks-bento-three-column-demo",
       "type": "registry:component",
-      "title": "Crop Marks Bento Demo",
-      "description": "A bento grid of single-layer tiles whose shared gaps pair the lines up.",
+      "title": "Crop Marks Three Column Bento Grid Demo",
+      "description": "Two tiles span both rows, so the middle column's row lines stop at them at full strength.",
       "registryDependencies": [
         "crop-marks"
       ],
       "files": [
         {
-          "path": "registry/examples/crop-marks-bento-demo.tsx",
+          "path": "registry/examples/crop-marks-bento-three-column-demo.tsx",
           "type": "registry:component",
-          "target": "@components/examples/crop-marks-bento-demo.tsx"
+          "target": "@components/examples/crop-marks-bento-three-column-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-bento-two-row-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Two Row Bento Grid Demo",
+      "description": "Rows split four-two and two-four: each gutter's lines stop at the wide tile of the other row and fade only into open space.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-bento-two-row-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-bento-two-row-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-bento-two-row-three-column-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Two Row Bento Grid with Three Column Second Row Demo",
+      "description": "Halves over thirds: every shared axis is drawn once from the layout.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-bento-two-row-three-column-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-bento-two-row-three-column-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crop-marks-bento-hairline-demo",
+      "type": "registry:component",
+      "title": "Crop Marks Hairline Bento Grid Demo",
+      "description": "Tiles that touch across a 1px gap: a single layer draws one line per gutter, still stopping where a tile spans it.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/crop-marks-bento-hairline-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/crop-marks-bento-hairline-demo.tsx"
         }
       ]
     },
     {
       "name": "crop-marks-messy-bento-demo",
       "type": "registry:component",
-      "title": "Crop Marks Messy Bento Demo",
+      "title": "Crop Marks Messy Bento Grid Demo",
       "description": "A staggered collage of tiles whose overshooting marks cross and run off the stage.",
       "registryDependencies": [
         "crop-marks"
@@ -151,8 +202,6 @@
       "title": "Plan Composer",
       "description": "An AI message input that expands into an agent's clarifying questions and returns the answers.",
       "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1",
         "lucide-react@^1.23.0",
         "motion@^12.42.2"
       ],
@@ -192,8 +241,6 @@
       "title": "Voice Composer",
       "description": "Switches between a controlled text composer and browser-backed voice capture with a real-time waveform.",
       "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1",
         "lucide-react@^1.23.0",
         "motion@^12.42.2"
       ],
@@ -237,10 +284,6 @@
       "type": "registry:ui",
       "title": "Draft Email Card",
       "description": "A controlled email drafting card with an editable recipient, subject, body, and action callbacks.",
-      "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1"
-      ],
       "registryDependencies": [
         "@shadcn/button",
         "@shadcn/separator",
@@ -277,11 +320,6 @@
       "type": "registry:ui",
       "title": "Chat Minimap",
       "description": "A compact conversation navigator that previews turns, tracks reading position, and jumps between message anchors.",
-      "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1",
-        "lucide-react@^1.23.0"
-      ],
       "registryDependencies": [
         "@shadcn/hover-card",
         "@shadcn/message-scroller"
@@ -446,11 +484,6 @@
           "backface-visibility": "hidden",
           "transform-origin": "50% 0%",
           "animation-name": "sd-foldIn"
-        },
-        "@media (prefers-reduced-motion: reduce)": {
-          "[data-sd-animate]": {
-            "animation": "none"
-          }
         }
       },
       "docs": "Add @source \"../node_modules/streamdown/dist/*.js\" and @source \"../node_modules/@streamdown/cjk/dist/*.js\" to your Tailwind CSS entry file. Adjust the relative paths when that file is nested differently."
@@ -550,12 +583,6 @@
           "position": "relative",
           "animation": "none"
         },
-        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
-          "opacity": "1"
-        },
-        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
-          "content": "none"
-        },
         "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]:nth-child(9n + 1)": {
           "--sd-magnetize-origin": "translate(-27px, 23px) rotate(-47deg)"
         },
@@ -604,12 +631,6 @@
           "position": "relative",
           "animation": "none"
         },
-        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
-          "opacity": "1"
-        },
-        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
-          "content": "none"
-        },
         "@keyframes sd-scaleSlam": {
           "0%": {
             "opacity": "0",
@@ -630,61 +651,53 @@
           "position": "relative",
           "animation": "none"
         },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
+          "opacity": "0"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
+          "content": "attr(data-sd-glyph) / \"\"",
+          "position": "absolute",
+          "inset-block-start": "0",
+          "inset-inline-start": "0",
+          "display": "inline-block",
+          "color": "currentColor",
+          "animation": "sd-magnetize 900ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+          "pointer-events": "none",
+          "transform-origin": "center",
+          "user-select": "none",
+          "white-space": "pre"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
+          "opacity": "0"
+        },
+        "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
+          "content": "attr(data-sd-glyph) / \"\"",
+          "position": "absolute",
+          "inset-block-start": "0",
+          "inset-inline-start": "0",
+          "display": "inline-block",
+          "color": "currentColor",
+          "animation": "sd-spinIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both",
+          "pointer-events": "none",
+          "transform-origin": "center",
+          "user-select": "none",
+          "white-space": "pre"
+        },
         "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
-          "opacity": "1"
+          "opacity": "0"
         },
         "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
-          "content": "none"
-        },
-        "@media (prefers-reduced-motion: no-preference)": {
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-layout]": {
-            "opacity": "0"
-          },
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"magnetize\"] [data-sd-glyph]::after": {
-            "content": "attr(data-sd-glyph) / \"\"",
-            "position": "absolute",
-            "inset-block-start": "0",
-            "inset-inline-start": "0",
-            "display": "inline-block",
-            "color": "currentColor",
-            "animation": "sd-magnetize 900ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
-            "pointer-events": "none",
-            "transform-origin": "center",
-            "user-select": "none",
-            "white-space": "pre"
-          },
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-layout]": {
-            "opacity": "0"
-          },
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"spinIn\"] [data-sd-glyph]::after": {
-            "content": "attr(data-sd-glyph) / \"\"",
-            "position": "absolute",
-            "inset-block-start": "0",
-            "inset-inline-start": "0",
-            "display": "inline-block",
-            "color": "currentColor",
-            "animation": "sd-spinIn 700ms var(--sd-easing, ease) var(--sd-delay, 0ms) both",
-            "pointer-events": "none",
-            "transform-origin": "center",
-            "user-select": "none",
-            "white-space": "pre"
-          },
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-layout]": {
-            "opacity": "0"
-          },
-          "[data-slot=\"playful-streaming\"][data-sd-animation=\"scaleSlam\"] [data-sd-glyph]::after": {
-            "content": "attr(data-sd-glyph) / \"\"",
-            "position": "absolute",
-            "inset-block-start": "0",
-            "inset-inline-start": "0",
-            "display": "inline-block",
-            "color": "currentColor",
-            "animation": "sd-scaleSlam 700ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
-            "pointer-events": "none",
-            "transform-origin": "center",
-            "user-select": "none",
-            "white-space": "pre"
-          }
+          "content": "attr(data-sd-glyph) / \"\"",
+          "position": "absolute",
+          "inset-block-start": "0",
+          "inset-inline-start": "0",
+          "display": "inline-block",
+          "color": "currentColor",
+          "animation": "sd-scaleSlam 700ms cubic-bezier(0.34, 1.56, 0.64, 1) var(--sd-delay, 0ms) both",
+          "pointer-events": "none",
+          "transform-origin": "center",
+          "user-select": "none",
+          "white-space": "pre"
         },
         "@media (forced-colors: active)": {
           "[data-slot=\"playful-streaming\"][data-sd-animation=\"spectrumTrail\"] [data-sd-animate]": {
@@ -731,8 +744,6 @@
       "title": "Stay Card",
       "description": "Displays a borderless gallery-based hotel result with pricing and rating.",
       "dependencies": [
-        "@base-ui/react@^1.6.0",
-        "class-variance-authority@^0.7.1",
         "lucide-react@^1.23.0"
       ],
       "registryDependencies": [
@@ -771,7 +782,6 @@
       "title": "Mosaic Stay Card",
       "description": "Displays a compact hotel result with a three-image mosaic, address, rating, and description.",
       "dependencies": [
-        "@base-ui/react@^1.6.0",
         "lucide-react@^1.23.0"
       ],
       "registryDependencies": [
