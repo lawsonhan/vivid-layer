@@ -119,10 +119,11 @@
     {
       "name": "crop-marks-bento-three-column-demo",
       "type": "registry:component",
-      "title": "Crop Marks Three Column Bento Grid Demo",
-      "description": "Two tiles span both rows, so the middle column's row lines stop at them at full strength.",
+      "title": "Crop Marks Feature Section Demo",
+      "description": "A product feature section whose intro and dashboard span both rows, stopping the middle column's row lines at full strength.",
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "features-01"
       ],
       "files": [
         {
@@ -135,10 +136,11 @@
     {
       "name": "crop-marks-bento-two-row-demo",
       "type": "registry:component",
-      "title": "Crop Marks Two Row Bento Grid Demo",
-      "description": "Rows split four-two and two-four: each gutter's lines stop at the wide tile of the other row and fade only into open space.",
+      "title": "Crop Marks Metrics Demo",
+      "description": "A metrics bento: a hero tile with the headline number and its trend chart, and two stacked tiles beside it, a total over its breakdown bar and a rate over its weekly tracker; the row line between them stops at the hero.",
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "stats-01"
       ],
       "files": [
         {
@@ -151,10 +153,11 @@
     {
       "name": "crop-marks-bento-two-row-three-column-demo",
       "type": "registry:component",
-      "title": "Crop Marks Two Row Bento Grid with Three Column Second Row Demo",
-      "description": "Halves over thirds: every shared axis is drawn once from the layout.",
+      "title": "Crop Marks Testimonials Demo",
+      "description": "A testimonials section: two featured quotes over three short ones, each with a quote mark and avatar; every shared axis is drawn once from the layout.",
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "testimonials-01"
       ],
       "files": [
         {
@@ -167,10 +170,11 @@
     {
       "name": "crop-marks-bento-hairline-demo",
       "type": "registry:component",
-      "title": "Crop Marks Hairline Bento Grid Demo",
-      "description": "Tiles that touch across a 1px gap: a single layer draws one line per gutter, still stopping where a tile spans it.",
+      "title": "Crop Marks Spec Sheet Demo",
+      "description": "A product and its specs touching across a 1px gap; a single layer draws one line per gutter like table rules.",
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "product-card-01"
       ],
       "files": [
         {
@@ -183,16 +187,123 @@
     {
       "name": "crop-marks-messy-bento-demo",
       "type": "registry:component",
-      "title": "Crop Marks Messy Bento Grid Demo",
-      "description": "A staggered collage of tiles whose overshooting marks cross and run off the stage.",
+      "title": "Crop Marks Gallery Demo",
+      "description": "A staggered collage of captioned images whose overshooting marks cross and run off the stage.",
       "registryDependencies": [
-        "crop-marks"
+        "crop-marks",
+        "gallery-01"
       ],
       "files": [
         {
           "path": "registry/examples/crop-marks-messy-bento-demo.tsx",
           "type": "registry:component",
           "target": "@components/examples/crop-marks-messy-bento-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "features-01",
+      "type": "registry:block",
+      "title": "Features 01",
+      "description": "A feature section on a Crop Marks bento: an intro with a call to action, two feature tiles, and product artwork spanning both rows.",
+      "dependencies": [
+        "lucide-react@^1.23.0"
+      ],
+      "registryDependencies": [
+        "crop-marks",
+        "@shadcn/button"
+      ],
+      "categories": [
+        "features"
+      ],
+      "files": [
+        {
+          "path": "components/blocks/features-01/features-01.tsx",
+          "type": "registry:component",
+          "target": "@components/blocks/features-01/features-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stats-01",
+      "type": "registry:block",
+      "title": "Stats 01",
+      "description": "A metrics section on a Crop Marks bento: a hero figure with its trend chart beside a breakdown bar and a supporting rate.",
+      "dependencies": [
+        "lucide-react@^1.23.0",
+        "recharts@^3.8.0"
+      ],
+      "registryDependencies": [
+        "crop-marks",
+        "@shadcn/badge",
+        "@shadcn/chart"
+      ],
+      "categories": [
+        "stats"
+      ],
+      "files": [
+        {
+          "path": "components/blocks/stats-01/stats-01.tsx",
+          "type": "registry:component",
+          "target": "@components/blocks/stats-01/stats-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-01",
+      "type": "registry:block",
+      "title": "Testimonials 01",
+      "description": "A testimonials section on a Crop Marks bento: two featured quotes over three short ones, each with a quote mark and an avatar.",
+      "registryDependencies": [
+        "crop-marks",
+        "@shadcn/avatar"
+      ],
+      "categories": [
+        "testimonials"
+      ],
+      "files": [
+        {
+          "path": "components/blocks/testimonials-01/testimonials-01.tsx",
+          "type": "registry:component",
+          "target": "@components/blocks/testimonials-01/testimonials-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gallery-01",
+      "type": "registry:block",
+      "title": "Gallery 01",
+      "description": "A gallery collage of captioned images whose hand-placed crop marks cross and run off the stage.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "categories": [
+        "gallery"
+      ],
+      "files": [
+        {
+          "path": "components/blocks/gallery-01/gallery-01.tsx",
+          "type": "registry:component",
+          "target": "@components/blocks/gallery-01/gallery-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-card-01",
+      "type": "registry:block",
+      "title": "Product Card 01",
+      "description": "A product spec card on a hairline Crop Marks grid: the product image and price beside four spec cells drawn like table rules.",
+      "registryDependencies": [
+        "crop-marks"
+      ],
+      "categories": [
+        "product-card"
+      ],
+      "files": [
+        {
+          "path": "components/blocks/product-card-01/product-card-01.tsx",
+          "type": "registry:component",
+          "target": "@components/blocks/product-card-01/product-card-01.tsx"
         }
       ]
     },

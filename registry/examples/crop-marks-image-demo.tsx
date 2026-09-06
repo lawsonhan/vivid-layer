@@ -32,7 +32,7 @@ export default function CropMarksImageDemo({
       >
         <section
           aria-labelledby="crop-marks-auth-title"
-          className="relative w-full p-6 sm:p-8"
+          className="relative w-full p-6 sm:p-8 dark:bg-[radial-gradient(50%_80%_at_20%_0%,--theme(--color-foreground/.1),transparent)]"
         >
           <div className="flex w-full flex-col gap-6">
             <div className="flex flex-col gap-1">

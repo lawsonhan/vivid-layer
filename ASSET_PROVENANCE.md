@@ -38,3 +38,52 @@ using the same AI-assisted visual direction.
 | `wind.webp` | `109cb1a8eb793119cec4b695f931c26f1ca89545a440b6b68080bbeb4d4d586c` |
 | `clear-night.webp` | `9ea69d3ba2800acdfa9370e4c5ce6b40dce78ca4f9b08c8140b533c492e65ae8` |
 | `partly-cloudy-night.webp` | `84034a72b00ac282f82bcc65bc494996f1447753877c28223f085d8b23a87391` |
+
+## Aurora Display Product Image
+
+`public/component-assets/aurora-display.webp` was generated for the Crop Marks
+Spec Sheet example using the built-in OpenAI image generation tool on
+September 6, 2026. It depicts a fictional, unbranded silver desktop monitor
+with a blue and violet screen in an ice-blue studio setting, inspired by
+Apple's restrained product advertising and modern e-commerce photography.
+It is not a photograph of an Apple product. No reference image was supplied.
+
+The generated PNG was encoded as a 1536 × 1024 WebP at quality 90.
+
+| Stored asset | SHA-256 |
+| --- | --- |
+| `aurora-display.webp` | `8df66b5d8eea7883fa432abe75e6b8e8ce19f4d423521bff2c9872f1e088bbab` |
+
+### Generation prompt
+
+```text
+Use case: ads-marketing.
+Asset type: premium e-commerce product campaign photograph for the left panel of a monitor specification sheet.
+Primary request: create a polished, modern promotional image of a premium desktop monitor, with a carefully art-directed studio background. Aim for the quality, restraint and material realism of Apple's product advertising and contemporary high-end industrial-design campaigns.
+Subject: a single original unbranded silver aluminum 27-inch widescreen monitor, slim enclosure, uniform narrow black bezel, precision-machined silver stand and a slim rectangular foot. Make it a desirable, physically convincing piece of hardware.
+Scene: an elegant seamless pale ice-blue studio cyclorama. A soft pool of daylight falls diagonally across the floor; a broad diffuse blue-lilac glow behind the product gives depth. The monitor stands on the floor plane with a realistic soft directional contact shadow. Subtle gradient atmosphere, beautifully controlled lighting. No transparent background.
+Composition: landscape 3:2. Show the whole monitor and stand from a gently elevated three-quarter front angle, about 15 degrees off-axis, so the thin aluminum side and sculptural support are visible. Product occupies about 78 percent of the image width and 80 percent of the height, centered with calm breathing room. The complete foot must be visible with floor below it. Architectural, intentional, clean.
+Screen: a sophisticated original abstract wallpaper of translucent flowing lavender and deep cobalt glass-like ribbons, with generous soft light regions and a restrained cyan accent. Elegant and luminous, no neon laser streaks. It should make the display look premium while keeping the hardware as the focal point.
+Photographic treatment: refined commercial studio photography, realistic brushed and bead-blasted metal, soft highlight rolloff, crisp glass, subtle optical reflections, immaculate edges, high production value. Natural perspective, sharp product detail.
+Constraints: one monitor only, no logo, no Apple branding, no text, no labels, no fake desktop UI, no watermark, no people, no cables, no keyboard or mouse, no extra products, no pedestal, no exploded view, no futuristic sci-fi environment, no flat front-on cutout, no heavy black vignette.
+```
+
+## Landing Playground Cloud Background
+
+`public/landing-features/shader-playground-clouds-dither.png` is a 1672 × 941
+background prepared on September 6, 2026, from
+[Anton Repponen's mountain and clouds photograph on Unsplash](https://unsplash.com/photos/mountain-with-clouds-wxxAx26SXys).
+The source photograph was edited with OpenAI image generation, then processed
+in [Turbo Dither](https://www.turbodither.com/) to retain its warm gold and
+muted green colors with a fine Floyd–Steinberg texture. The approved PNG was
+copied into the project without further image editing.
+
+## Landing Playground Forest Background
+
+`public/landing-features/shader-playground-forest-dither.png` is the approved
+1672 × 941 forest background prepared on September 6, 2026, from this
+[Unsplash photograph](https://images.unsplash.com/photo-1511497584788-876760111969).
+The source photograph was edited with OpenAI image generation, then processed
+in [Turbo Dither](https://www.turbodither.com/) to retain its muted greens and
+warm sky with a fine Floyd–Steinberg texture. The approved PNG was copied into
+the project without further image editing.

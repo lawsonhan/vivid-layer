@@ -41,6 +41,7 @@ const requiredRootEntries = [
   "registry.json",
 ]
 const allowedRegistrySourceRoots = [
+  "components/blocks/",
   "components/effects/",
   "components/ui/",
   "hooks/",
@@ -138,6 +139,14 @@ for (const item of registry.items.filter((item) => item.type === "registry:ui"))
   }
 }
 
+for (const item of registry.items.filter(
+  (item) => item.type === "registry:block"
+)) {
+  if (!readme.includes(`- ${item.title}\n`)) {
+    throw new Error(`Public README block catalog is missing: ${item.title}`)
+  }
+}
+
 const contributing = await readFile(
   path.join(repositoryRoot, "CONTRIBUTING.md"),
   "utf8"
@@ -205,28 +214,50 @@ const provenance = await readFile(
   path.join(repositoryRoot, "ASSET_PROVENANCE.md"),
   "utf8"
 )
-const weatherAssetRecords = [
-  ...provenance.matchAll(/\| `([^`]+\.webp)` \| `([0-9a-f]{64})` \|/g),
-]
+// Every provenance section lists its stored assets with a SHA-256 and names
+// the public/ directory they live in; verify each record against that file.
+const provenanceSections = provenance.split(/^## /m).slice(1)
+let verifiedAssets = 0
 
-if (weatherAssetRecords.length !== 10) {
-  throw new Error(
-    `Expected 10 weather asset provenance records, found ${weatherAssetRecords.length}.`
-  )
-}
+for (const section of provenanceSections) {
+  const heading = section.split("\n", 1)[0].trim()
+  const records = [
+    ...section.matchAll(/\| `([^`]+\.webp)` \| `([0-9a-f]{64})` \|/g),
+  ]
+  if (records.length === 0) continue
 
-for (const [, filename, expectedHash] of weatherAssetRecords) {
-  const source = await readFile(
-    path.join(repositoryRoot, "public", "weather-assets", filename)
-  )
-  const actualHash = createHash("sha256").update(source).digest("hex")
-  if (actualHash !== expectedHash) {
-    throw new Error(`Weather asset integrity check failed: ${filename}`)
+  const directory = section.match(/`public\/([\w-]+)(?:\/[^`]*)?`/)?.[1]
+  if (!directory) {
+    throw new Error(
+      `Asset provenance section "${heading}" must name its public/ directory.`
+    )
+  }
+  if (heading === "Vivid Layer Weather Icons" && records.length !== 10) {
+    throw new Error(
+      `Expected 10 weather asset provenance records, found ${records.length}.`
+    )
+  }
+
+  for (const [, filename, expectedHash] of records) {
+    const source = await readFile(
+      path.join(repositoryRoot, "public", directory, filename)
+    )
+    const actualHash = createHash("sha256").update(source).digest("hex")
+    if (actualHash !== expectedHash) {
+      throw new Error(`Asset integrity check failed: ${directory}/${filename}`)
+    }
+    verifiedAssets += 1
   }
 }
 
+if (verifiedAssets < 10) {
+  throw new Error(
+    `Expected at least 10 verified provenance assets, found ${verifiedAssets}.`
+  )
+}
+
 console.log(
-  `Public boundary is valid: ${registry.items.length} Registry items, ${registrySourceFiles.size} source files, and 10 verified weather assets.`
+  `Public boundary is valid: ${registry.items.length} Registry items, ${registrySourceFiles.size} source files, and ${verifiedAssets} verified provenance assets.`
 )
 
 function normalizeRepositoryPath(filePath) {

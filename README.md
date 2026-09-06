@@ -1,7 +1,7 @@
 <h1 align="center">Vivid Layer</h1>
 
 <p align="center">
-  Source-available React components and WebGL shader effects distributed through the shadcn Registry.
+  Source-available React components, WebGL shader effects, and page sections distributed through the shadcn Registry.
 </p>
 
 <p align="center">
@@ -10,6 +10,8 @@
   <a href="https://www.vivid-layer.com/components">Components</a>
   ·
   <a href="https://www.vivid-layer.com/shaders">Shaders</a>
+  ·
+  <a href="https://www.vivid-layer.com/blocks">Blocks</a>
   ·
   <a href="https://www.vivid-layer.com">Website</a>
   ·
@@ -28,7 +30,7 @@ Add the Vivid Layer Registry to `components.json`:
 }
 ```
 
-Install a Component or Shader with the shadcn CLI:
+Install a Component, Shader, or Block with the shadcn CLI:
 
 ```bash
 pnpm dlx shadcn@latest add @vivid-layer/grain-gradient
@@ -37,6 +39,7 @@ pnpm dlx shadcn@latest add @vivid-layer/draft-email-card
 pnpm dlx shadcn@latest add @vivid-layer/streaming
 pnpm dlx shadcn@latest add @vivid-layer/stay-card
 pnpm dlx shadcn@latest add @vivid-layer/single-day-weather-card
+pnpm dlx shadcn@latest add @vivid-layer/stats-01
 ```
 
 ## Components
@@ -67,11 +70,25 @@ The public Shader catalog includes 26 Paper Shaders adapters with curated
 presets. Browse the complete catalog, configurators, and interactive previews
 at [vivid-layer.com/shaders](https://www.vivid-layer.com/shaders).
 
+## Blocks
+
+Blocks are complete page sections built on the Crop Marks component. They are
+documented one page per category, with every variant of a category on that
+page, at [vivid-layer.com/blocks](https://www.vivid-layer.com/blocks). The
+public Block catalog currently includes:
+
+- Features 01
+- Stats 01
+- Testimonials 01
+- Gallery 01
+- Product Card 01
+
 ## Repository structure
 
 ```text
 components/ui/       React UI components
 components/effects/  Paper Shaders adapters
+components/blocks/   Page sections, one folder per Block
 registry/examples/   Installable examples and presets
 hooks/               Shared public hooks
 lib/                 Public Registry utilities
