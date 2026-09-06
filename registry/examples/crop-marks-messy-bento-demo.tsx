@@ -1,4 +1,4 @@
-import { CropMarksCard, CropMarksLine } from "@/components/ui/crop-marks"
+import { CropMarksLine } from "@/components/ui/crop-marks"
 
 /*
  * The collage arrangement: staggered tiles no regular grid describes,
@@ -31,11 +31,11 @@ export default function CropMarksMessyBentoDemo() {
             axis="vertical"
             className="-top-16 -right-px h-[calc(100%+8rem)]"
           />
-          <CropMarksCard className="flex h-80 items-center justify-center p-6">
+          <div className="flex h-80 items-center justify-center p-6">
             <p className="text-center text-sm text-muted-foreground">
               Stagger the tiles and the crossings drift.
             </p>
-          </CropMarksCard>
+          </div>
         </div>
         <div className="relative flex w-2/5 flex-none flex-col gap-8">
           <CropMarksLine
@@ -52,11 +52,11 @@ export default function CropMarksMessyBentoDemo() {
               className="-bottom-px -left-8 w-[calc(100%+6rem)]"
               fade="end"
             />
-            <CropMarksCard className="flex h-44 items-center justify-center p-6">
+            <div className="flex h-44 items-center justify-center p-6">
               <p className="text-center text-sm text-muted-foreground">
                 Off-grid.
               </p>
-            </CropMarksCard>
+            </div>
           </div>
           <div className="relative">
             <CropMarksLine
@@ -66,11 +66,11 @@ export default function CropMarksMessyBentoDemo() {
             <CropMarksLine
               className="-bottom-px -left-16 w-[calc(100%+8rem)]"
             />
-            <CropMarksCard className="flex h-64 items-center justify-center p-6">
+            <div className="flex h-64 items-center justify-center p-6">
               <p className="text-center text-sm text-muted-foreground">
                 Lines run off the stage.
               </p>
-            </CropMarksCard>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import {
-  CropMarksCard,
   CropMarksGrid,
   CropMarksGridItem,
 } from "@/components/ui/crop-marks"
@@ -20,54 +19,39 @@ export default function CropMarksBentoHairlineDemo() {
         className="w-full auto-rows-[8rem] md:grid-rows-[repeat(2,14rem)]"
       >
         <CropMarksGridItem area="a">
-          <CropMarksCard
-            border={false}
-            className="flex flex-1 items-center justify-center rounded-none p-4"
-          >
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Spans two columns and both rows
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="b">
-          <CropMarksCard
-            border={false}
-            className="flex flex-1 items-center justify-center rounded-none p-4"
-          >
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Cell
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="c">
-          <CropMarksCard
-            border={false}
-            className="flex flex-1 items-center justify-center rounded-none p-4"
-          >
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Cell
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="d">
-          <CropMarksCard
-            border={false}
-            className="flex flex-1 items-center justify-center rounded-none p-4"
-          >
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Cell
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="e">
-          <CropMarksCard
-            border={false}
-            className="flex flex-1 items-center justify-center rounded-none p-4"
-          >
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Cell
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
       </CropMarksGrid>
     </div>

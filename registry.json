@@ -99,7 +99,7 @@
       "name": "crop-marks-image-demo",
       "type": "registry:component",
       "title": "Crop Marks Authentication Demo",
-      "description": "Frames a compact authentication form with the default double crop marks.",
+      "description": "Frames a compact authentication form with single-layer crop marks.",
       "dependencies": [
         "lucide-react@^1.23.0"
       ],

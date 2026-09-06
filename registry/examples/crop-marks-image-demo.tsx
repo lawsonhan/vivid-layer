@@ -15,22 +15,24 @@ import { cn } from "@/lib/utils"
 type CropMarksImageDemoProps = {
   cropMarksProps?: Pick<
     CropMarksProps,
-    "layers" | "layerGap" | "overshoot" | "fade"
+    "layers" | "layerGap" | "overshoot" | "fade" | "className"
   >
 }
 
 export default function CropMarksImageDemo({
-  cropMarksProps,
+  cropMarksProps: { className, ...cropMarksProps } = {},
 }: CropMarksImageDemoProps = {}) {
   return (
     <div className="flex h-[26rem] w-full items-center justify-center p-10 sm:p-14">
-      <CropMarks className="w-full max-w-sm" {...cropMarksProps}>
+      <CropMarks
+        className={cn("w-full max-w-sm", className)}
+        layers="single"
+        overshoot={48}
+        {...cropMarksProps}
+      >
         <section
           aria-labelledby="crop-marks-auth-title"
-          className={cn(
-            "relative w-full rounded-xl bg-background p-6 sm:p-8",
-            "dark:bg-[radial-gradient(50%_80%_at_20%_0%,--theme(--color-foreground/.1),transparent)]"
-          )}
+          className="relative w-full p-6 sm:p-8"
         >
           <div className="flex w-full flex-col gap-6">
             <div className="flex flex-col gap-1">

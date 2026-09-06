@@ -1,5 +1,4 @@
 import {
-  CropMarksCard,
   CropMarksGrid,
   CropMarksGridItem,
 } from "@/components/ui/crop-marks"
@@ -18,32 +17,32 @@ export default function CropMarksBentoThreeColumnDemo() {
         className="w-full auto-rows-[8rem] md:grid-rows-[repeat(2,18rem)]"
       >
         <CropMarksGridItem area="a">
-          <CropMarksCard className="flex flex-1 items-center justify-center p-4">
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Spans both rows
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="b">
-          <CropMarksCard className="flex flex-1 items-center justify-center p-4">
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Top
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="c">
-          <CropMarksCard className="flex flex-1 items-center justify-center p-4">
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Spans both rows
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
         <CropMarksGridItem area="d">
-          <CropMarksCard className="flex flex-1 items-center justify-center p-4">
+          <div className="flex flex-1 items-center justify-center p-4">
             <p className="text-center text-sm text-muted-foreground">
               Row lines stop here
             </p>
-          </CropMarksCard>
+          </div>
         </CropMarksGridItem>
       </CropMarksGrid>
     </div>

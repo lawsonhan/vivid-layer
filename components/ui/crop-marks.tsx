@@ -101,36 +101,6 @@ function CropMarks({
   )
 }
 
-type CropMarksCardProps = React.ComponentProps<"div"> & {
-  /** Ring outline around the surface. */
-  border?: boolean
-  /** The collage drop shadow under the surface. */
-  shadow?: boolean
-}
-
-/** The card surface that pairs with the crop marks: the vivid layer
- * collage skin with its outline and drop shadow as switches. */
-function CropMarksCard({
-  border = true,
-  shadow = false,
-  className,
-  ...props
-}: CropMarksCardProps) {
-  return (
-    <div
-      data-slot="crop-marks-card"
-      className={cn(
-        "rounded-xl bg-card text-card-foreground",
-        border && "ring-1 ring-foreground/5 dark:ring-foreground/10",
-        shadow &&
-          "shadow-[0_5px_15px_rgba(0,0,0,0.08),0_15px_35px_-5px_rgba(25,28,33,0.2)]",
-        className,
-      )}
-      {...props}
-    />
-  )
-}
-
 type CropMarksLineFade = "both" | "start" | "end" | "none"
 
 type CropMarksLineProps = React.ComponentProps<"span"> & {
@@ -499,9 +469,9 @@ type CropMarksGridItemProps = React.ComponentProps<"div"> & {
   area: string
 }
 
-/** One tile of a CropMarksGrid; wrap a CropMarksCard (or any opaque
- * block) with it. Stacked below the breakpoint, it draws its own top
- * and bottom lines since each stacked edge is a unique axis there. */
+/** One tile of a CropMarksGrid; wrap your content with it. Stacked
+ * below the breakpoint, it draws its own top and bottom lines since
+ * each stacked edge is a unique axis there. */
 function CropMarksGridItem({
   area,
   className,
@@ -538,12 +508,10 @@ function CropMarksGridItem({
 
 export {
   CropMarks,
-  CropMarksCard,
   CropMarksGrid,
   CropMarksGridItem,
   CropMarksLine,
   deriveCropMarksGridLines,
-  type CropMarksCardProps,
   type CropMarksGridBreakpoint,
   type CropMarksGridItemProps,
   type CropMarksGridLine,
