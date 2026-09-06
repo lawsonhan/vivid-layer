@@ -205,7 +205,7 @@
       "name": "features-01",
       "type": "registry:block",
       "title": "Features 01",
-      "description": "A feature section on a Crop Marks bento: an intro with a call to action, two feature tiles, and product artwork spanning both rows.",
+      "description": "An intro with a call to action, two feature tiles, and product artwork spanning both rows.",
       "dependencies": [
         "lucide-react@^1.23.0"
       ],
@@ -228,7 +228,7 @@
       "name": "stats-01",
       "type": "registry:block",
       "title": "Stats 01",
-      "description": "A metrics section on a Crop Marks bento: a hero figure with its trend chart beside a breakdown bar and a supporting rate.",
+      "description": "A six-month installs chart in a hero spanning both rows, beside a breakdown bar and an uptime tracker.",
       "dependencies": [
         "lucide-react@^1.23.0",
         "recharts@^3.8.0"
@@ -253,7 +253,7 @@
       "name": "testimonials-01",
       "type": "registry:block",
       "title": "Testimonials 01",
-      "description": "A testimonials section on a Crop Marks bento: two featured quotes over three short ones, each with a quote mark and an avatar.",
+      "description": "Two featured quotes over three short ones, each with a quote mark and avatar.",
       "registryDependencies": [
         "crop-marks",
         "@shadcn/avatar"
@@ -273,7 +273,7 @@
       "name": "gallery-01",
       "type": "registry:block",
       "title": "Gallery 01",
-      "description": "A gallery collage of captioned images whose hand-placed crop marks cross and run off the stage.",
+      "description": "Three staggered image tiles whose hand-placed crop marks cross and run off the stage.",
       "registryDependencies": [
         "crop-marks"
       ],
@@ -292,7 +292,7 @@
       "name": "product-card-01",
       "type": "registry:block",
       "title": "Product Card 01",
-      "description": "A product spec card on a hairline Crop Marks grid: the product image and price beside four spec cells drawn like table rules.",
+      "description": "A product image and price beside four spec cells on a hairline grid.",
       "registryDependencies": [
         "crop-marks"
       ],
