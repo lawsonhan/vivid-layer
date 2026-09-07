@@ -6,7 +6,9 @@ import {
   CropMarksGridItem,
 } from "@/components/ui/crop-marks"
 
-const noisePattern = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(
+/** A tiling grain, an SVG data URL for `background-image`; lay it over
+ * a gradient with `mix-blend-overlay` for the block's artwork surface. */
+export const noisePattern = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 100 100">
     <filter id="n">
       <feTurbulence type="turbulence" baseFrequency="1.4" numOctaves="1" seed="2" stitchTiles="stitch" result="n" />
