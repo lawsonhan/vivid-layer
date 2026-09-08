@@ -185,7 +185,7 @@ License: <https://github.com/akaieuan/trickle-UI-kit/blob/main/LICENSE>
 
 ## Shader Lab
 
-Print Halftone depends on `@basementstudio/shader-lab@3.0.2` and `three@0.183.2`. The upstream shaders are not copied or rewritten. Vivid Layer's adapter and examples remain Vivid Layer Material.
+Color Dithering and Print Halftone depend on `@basementstudio/shader-lab@3.0.2` and `three@0.183.2`. The upstream shaders are not copied or rewritten. Vivid Layer's adapter and examples remain Vivid Layer Material.
 
 Shader Lab: Copyright © 2026 basement.studio LLC. Apache License, Version 2.0.
 

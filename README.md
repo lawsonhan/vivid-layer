@@ -82,13 +82,12 @@ public Block catalog currently includes:
 - Testimonials 01
 - Gallery 01
 - Product Card 01
-- Footer 01
 
 ## Repository structure
 
 ```text
 components/ui/       React UI components
-components/effects/  Shader components and adapters
+components/effects/  Paper Shaders adapters
 components/blocks/   Page sections, one folder per Block
 registry/examples/   Installable examples and presets
 hooks/               Shared public hooks
