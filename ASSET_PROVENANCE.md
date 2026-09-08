@@ -87,3 +87,12 @@ The source photograph was edited with OpenAI image generation, then processed
 in [Turbo Dither](https://www.turbodither.com/) to retain its muted greens and
 warm sky with a fine Floyd–Steinberg texture. The approved PNG was copied into
 the project without further image editing.
+
+## Shader Lab Monument Valley example
+
+- Creator: Jeremy Bishop.
+- Source: https://unsplash.com/photos/monument-valley-k0g5RBU0OKg
+- License: Unsplash License, https://unsplash.com/license
+- Stored asset: `public/shader-assets/monument-valley.9a0e22e4434a.jpg`
+- SHA-256: `9a0e22e4434ac4db0275549d196c9cb010c43e51a19d8d10671b493d688681b0`
+- The original downloaded photo is used without additional color correction. Shader posters are rendered derivatives.

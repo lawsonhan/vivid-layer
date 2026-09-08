@@ -2064,6 +2064,157 @@
       ]
     },
     {
+      "name": "color-dithering",
+      "type": "registry:component",
+      "title": "Color Dithering",
+      "description": "Colorful ordered dithering with RGB channel separation.",
+      "dependencies": [
+        "@basementstudio/shader-lab@3.0.2",
+        "three@0.183.2"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/color-dithering.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/color-dithering.tsx"
+        },
+        {
+          "path": "components/effects/shader-lab-image.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/shader-lab-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-dithering-demo",
+      "type": "registry:component",
+      "title": "Color Dithering Demo",
+      "description": "A minimal Color Dithering example.",
+      "registryDependencies": [
+        "color-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-dithering-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-dithering-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "print-halftone",
+      "type": "registry:component",
+      "title": "Print Halftone",
+      "description": "CMYK print screening with adjustable inks, paper, and registration.",
+      "dependencies": [
+        "@basementstudio/shader-lab@3.0.2",
+        "three@0.183.2"
+      ],
+      "categories": [
+        "shaders"
+      ],
+      "files": [
+        {
+          "path": "components/effects/print-halftone.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/print-halftone.tsx"
+        },
+        {
+          "path": "components/effects/shader-lab-image.tsx",
+          "type": "registry:component",
+          "target": "@components/effects/shader-lab-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "print-halftone-demo",
+      "type": "registry:component",
+      "title": "Print Halftone Demo",
+      "description": "A minimal Print Halftone example.",
+      "registryDependencies": [
+        "print-halftone"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/print-halftone-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/print-halftone-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-dithering-chromatic-preset",
+      "type": "registry:component",
+      "title": "ColorDithering Chromatic",
+      "description": "Chromatic settings for ColorDithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "shader-lab-preset",
+        "variantOf": "color-dithering"
+      },
+      "registryDependencies": [
+        "color-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-dithering-chromatic-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-dithering-chromatic-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-dithering-classic-preset",
+      "type": "registry:component",
+      "title": "ColorDithering Classic",
+      "description": "Classic settings for ColorDithering.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "shader-lab-preset",
+        "variantOf": "color-dithering"
+      },
+      "registryDependencies": [
+        "color-dithering"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/color-dithering-classic-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/color-dithering-classic-preset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "print-halftone-process-preset",
+      "type": "registry:component",
+      "title": "PrintHalftone Process",
+      "description": "Process settings for PrintHalftone.",
+      "categories": [
+        "shader-presets"
+      ],
+      "meta": {
+        "kind": "shader-lab-preset",
+        "variantOf": "print-halftone"
+      },
+      "registryDependencies": [
+        "print-halftone"
+      ],
+      "files": [
+        {
+          "path": "registry/examples/print-halftone-process-preset.tsx",
+          "type": "registry:component",
+          "target": "@components/examples/print-halftone-process-preset.tsx"
+        }
+      ]
+    },
+    {
       "name": "grain-gradient-default-preset",
       "type": "registry:component",
       "title": "Grain Gradient Default Preset",
